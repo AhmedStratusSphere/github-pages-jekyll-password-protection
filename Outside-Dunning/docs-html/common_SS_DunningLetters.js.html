@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> common/SS_DunningLetters.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>common/SS_DunningLetters.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ *
+ * @NApiVersion         2.1
+ * @NModuleScope        SameAccount
+ *
+ * @fileoverview       Dunning Letters module for rendering and sending dunning letters
+ * @module             SS_DunningLetters
+ * @public
+ *
+ * @requires           SS_Constants
+ * @requires           SS_DataTableTask
+ * @requires           SS_Search
+ * @requires           SS_Task
+ * @requires           SS_UI
+ *
+ * @exports            buildSearchFilters
+ * @exports            render
+ * @exports            send
+ *
+ *
+ */
+
+define(
+    [
+        './SS_Constants',
+        './SS_DataTableTask',
+        './SS_Search',
+        './SS_Task',
+        './SS_UI'
+    ],
+    (
+        SS_Constants,
+        SS_DataTableTask,
+        SS_Search,
+        SS_Task,
+        SS_UI
+    ) => {
+        /**
+         * @name MODULE
+         * @description Module name for logging
+         * @constant
+         * @type {string}
+         *
+         */
+        const MODULE = `SS|DunningLetters`;
+
+        /**
+         * @name FORM
+         * @description Form configuration
+         * @type {Object}
+         * @constant
+         */
+        const FORM = SS_Constants.Forms;
+
+        /**
+         * @name REQUEST_PARAMS
+         * @description Request parameters
+         * @type {Object}
+         * @constant
+         */
+        const REQUEST_PARAMS = SS_Constants.RequestParameters;
+        /**
+         * @name REQUEST_FIELDS
+         * @description Request fields
+         * @constant
+         * @type {Object}
+         */
+        const REQUEST_FIELDS = REQUEST_PARAMS;
+
+        /**
+         * @name OPERATOR
+         * @description Search operators
+         * @constant
+         * @type {Object}
+         */
+        const OPERATOR = SS_Search.Operator;
+
+        /**
+         * @name TRANSACTION
+         * @description Transaction fields
+         * @constant
+         * @type {Object}
+         */
+        const TRANSACTION = SS_Constants.Transaction;
+
+        /**
+         * @name REQUEST_TYPE
+         * @description Request types
+         * @constant
+         * @type {{DUNNING_LETTERS: string, DUNNING_STATEMENTS: string}}
+         */
+        const REQUEST_TYPE = SS_Constants.CustomLists.DataTableSuiteletTypes
+
+        /**
+         * @function buildSearchFilters
+         * @description Build search filters
+         * @param options
+         * @param {string} options.balance
+         * @param {string} options.cas
+         * @param {string} options.condition
+         * @param {string} options.customer
+         * @param {string} options.lastcomm
+         * @param {string} options.levels
+         * @param {string} options.openbalanceusd
+         * @param {string} options.subsidiary
+         * @returns {Array}
+         *
+         */
+        const buildSearchFilters = (options) => {
+            const TITLE = `${MODULE}.BuildSearchFilters`;
+            let {
+                // balance,
+                cas,
+                condition,
+                customer,
+                lastcomm,
+                levels,
+                openbalanceusd,
+                subsidiary
+            } = options;
+            log.debug({ title: `${TITLE} options`, details: JSON.stringify(options) });
+            let filters = [];
+
+            if (cas) {
+                filters = filters.concat([
+                    [ `customermain.${SS_Constants.Entity.CustomFields.CAS}`, OPERATOR.ANYOF, cas ],
+                    'AND'
+                ]);
+            }
+
+            if (customer) {
+                filters = filters.concat([
+                    [ TRANSACTION.Fields.NAME, OPERATOR.ANYOF, customer ],
+                    'AND'
+                ]);
+            }
+
+            if (lastcomm) {
+                filters = filters.concat([
+                    [
+                        [ TRANSACTION.CustomFields.LAST_COMMUNICATION_DATE, OPERATOR.ONORBEFORE, lastcomm ],
+                        'OR',
+                        [ TRANSACTION.CustomFields.LAST_COMMUNICATION_DATE, OPERATOR.ISEMPTY, null ]
+                    ],
+                    'AND'
+                ]);
+            }
+
+            if (subsidiary) {
+                filters = filters.concat([
+                        [
+                            TRANSACTION.Fields.SUBSIDIARY, OPERATOR.ANYOF, subsidiary
+                        ],
+                        'AND'
+                    ]
+                );
+            }
+
+            if (condition &amp;&amp; !!openbalanceusd === true) {
+                let operator = OPERATOR.EQUALTO;
+                switch (condition.toLowerCase()) {
+                    case 'equalgreat': {
+                        operator = OPERATOR.GREATERTHANOREQUALTO;
+                        break;
+                    }
+                    case 'equalless': {
+                        operator = OPERATOR.LESSTHANOREQUALTO;
+                        break;
+                    }
+                }
+                filters = filters.concat([
+                    [ `sum(${TRANSACTION.Fields.AMOUNT_REMAINING})`, operator, openbalanceusd ],
+                    'AND'
+                ]);
+            }
+
+            let dunningLevel = SS_Constants.CustomLists.DunningLevels.Values.find(d => d.id === levels);
+            if (dunningLevel) {
+                filters = filters.concat([
+                    [ `max(${TRANSACTION.Fields.DAYS_OVERDUE})`, OPERATOR.BETWEEN, dunningLevel.from, dunningLevel.to ],
+                    'AND'
+                ]);
+            }
+
+            if (filters.length > 0) {
+                filters.pop();
+            }
+            log.debug({ title: `${TITLE} END`, details: JSON.stringify(filters) });
+
+            return filters;
+        };
+
+        /**
+         * @function send
+         * @description Send dunning letters
+         * @param {Object} options
+         * @param {string} options.body
+         * @param {Object} options.query
+         * @param {Object} options.response
+         * @param {Object} options.script
+         * @returns {void}
+         */
+        const send = (options) => {
+            const TITLE = `${MODULE}.Send`;
+            let { body, query, response, script } = options;
+            log.debug({ title: `${TITLE} body`, details: body });
+            log.audit({ title: `${TITLE} body`, details: body });
+
+            // Build customers array
+            let jsonBody = JSON.parse(body);
+            log.debug({ title: `${TITLE} jsonBody.list`, details: JSON.stringify(jsonBody.list) });
+
+            let customers = jsonBody.list.map(d => {
+                log.debug({ title: `${TITLE} item in list`, details: JSON.stringify(d) });
+
+                let split = d.id.split('-');
+                return {
+                    customer: split[0],
+                    level: 'Statement',
+                    overrideEmails: d.override,
+                    subsidiary: split[1]
+                };
+            });
+            log.debug({ title: `${TITLE} customers`, details: JSON.stringify(customers) });    //see here
+
+            // Create MR Task
+            let dtTask = SS_DataTableTask.create({
+                data: body,
+                type: SS_Constants.CustomLists.DataTableSuiteletTypes.DUNNING_LETTERS
+            });
+            log.debug({ title: `${TITLE} dtTask`, details: JSON.stringify(dtTask) });
+
+            let mrTaskParams = {};
+            mrTaskParams[SS_Constants.ScriptParameters.DunningStatementMapReduce.TaskRecord] = dtTask.data;
+            mrTaskParams[SS_Constants.ScriptParameters.DataTableTaskMapReduce.CustomersArray] = customers;
+            SS_Task.createMapReduceTask({
+                scriptId: SS_Constants.Scripts.DunningLettersMapReduce.scriptId,
+                params: mrTaskParams
+            });
+
+           //log.debug({ title: TITLE, details: `Successfully created map/reduce task ID ${mrTask.data}.` });
+            response.write({
+                output: JSON.stringify(dtTask)
+            });
+        };
+
+        /**
+         * @function render
+         * @description Render the dunning letter form
+         * @param {Object} options
+         * @param {Object} options.request
+         * @param {Object} options.response
+         * @param {Object} options.defaultValues
+         * @returns {Object}
+         */
+        const render = (options) => {
+            const TITLE = `${MODULE}.Render`;
+            let { request, response, defaultValues } = options;
+            log.audit({ title: `${TITLE} request`, details: JSON.stringify(request) });
+            log.audit({ title: `${TITLE} defaultValues`, details: JSON.stringify(defaultValues) });
+            log.audit({ title: `${TITLE} defaultValues.custpage_dunning_type`, details: defaultValues.custpage_dunning_type })
+            switch (defaultValues.custpage_dunning_type) {
+                case REQUEST_TYPE.DUNNING_STATEMENTS: {
+                    let queryParameters = SS_UI.readQueryParameters({ fields: REQUEST_FIELDS.DUNNING_STATEMENTS, request });
+                    log.debug({ title: `${TITLE} queryParameters`, details: JSON.stringify(queryParameters) });
+                    let parameterFields = SS_UI.mapParametersToFields({
+                        fields: REQUEST_FIELDS.DUNNING_STATEMENTS,
+                        form: FORM.DUNNING_STATEMENTS,
+                        parameters: queryParameters
+                    });
+                    log.debug({ title: `${TITLE} parameterFields`, details: JSON.stringify(parameterFields) });
+                    defaultValues = {
+                        ...defaultValues,
+                        ...parameterFields
+                    };
+                    break;
+                }
+
+                case REQUEST_TYPE.DUNNING_LETTERS: {
+                    let queryParameters = SS_UI.readQueryParameters({ fields: REQUEST_FIELDS.DUNNING_LETTERS, request });
+                    log.debug({ title: `${TITLE} queryParameters`, details: JSON.stringify(queryParameters) });
+                    let parameterFields = SS_UI.mapParametersToFields({
+                        fields: REQUEST_FIELDS.DUNNING_LETTERS,
+                        form: FORM.DUNNING_LETTERS,
+                        parameters: queryParameters
+                    });
+                    log.debug({ title: `${TITLE} parameterFields`, details: JSON.stringify(parameterFields) });
+                    defaultValues = {
+                        ...defaultValues,
+                        ...parameterFields
+                    };
+                    break;
+                }
+
+            }
+            //     let queryParameters = SS_UI.readQueryParameters({ fields: REQUEST_FIELDS.DUNNING_STATEMENTS, request });
+
+            //  log.debug({ title: `${TITLE} queryParameters`, details: JSON.stringify(queryParameters) });
+
+            // let parameterFields = SS_UI.mapParametersToFields({
+            //     fields: REQUEST_FIELDS.DUNNING_STATEMENTS,
+            //     form: FORM,
+            //     parameters: queryParameters
+            // });
+            //     log.debug({ title: `${TITLE} parameterFields`, details: JSON.stringify(parameterFields) });
+
+            // defaultValues = {
+            //     ...defaultValues,
+            //     ...parameterFields
+            // };
+            log.debug({ title: `${TITLE} defaultValues`, details: JSON.stringify(defaultValues) });
+            switch (defaultValues.custpage_dunning_type) {
+                case REQUEST_TYPE.DUNNING_STATEMENTS: {
+                    return SS_UI.buildForm({
+                        config: FORM.DUNNING_STATEMENTS,
+                        defaultValues: defaultValues
+                    });
+                    break;
+                }
+
+                case REQUEST_TYPE.DUNNING_LETTERS: {
+                    return SS_UI.buildForm({
+                        config: FORM.DUNNING_LETTERS,
+                        defaultValues: defaultValues
+                    });
+                    break;
+                }
+
+            }
+            // return SS_UI.buildForm({
+            //     config: FORM,
+            //     defaultValues: defaultValues
+            // });
+        };
+
+        return {
+            buildSearchFilters,
+            render,
+            send
+        };
+    }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

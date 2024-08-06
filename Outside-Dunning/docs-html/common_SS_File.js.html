@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> common/SS_File.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>common/SS_File.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Wrapper module for N/file
+ *
+ * @NApiVersion     2.1
+ * @NModuleScope    SameAccount
+ *
+ * @fileoverview    Wrapper module for N/file
+ * @module          SS_File
+ * @public
+ *
+ * @requires        N/file
+ * @requires        SS_Search
+ *
+ * @return {Object}  SS_File
+ * @return {Function} SS_File.create
+ * @return {Function} SS_File.get
+ * @return {Function} SS_File.load
+ *
+ *
+ */
+
+define(
+    [
+        'N/file',
+        './SS_Search'
+    ],
+    (
+        NS_File,
+        SS_Search
+    ) => {
+        /**
+         * @name MODULE
+         * @description Module name for logging
+         * @type {string}
+         *
+         * @constant
+         * @example MODULE = 'outside.File'
+         */
+        const MODULE = 'outside.File';
+
+        /**
+         * @function getType
+         * @param options
+         * @param {string} options.name
+         * @description Get the file type based on the file name
+         * @example getType({ name: 'file.txt' });
+         * @return {string}
+         */
+        const getType = (options) => {
+            const TITLE = 'Get File Type';
+            let extension = parseLast(options.name);
+            let type = NS_File.Type.PLAINTEXT;
+
+            switch (extension) {
+                case 'bmp': { type = NS_File.Type.BPMIMAGE; break; }
+                case 'css': { type = NS_File.Type.STYLESHEET; break; }
+                case 'csv': { type = NS_File.Type.CSV; break; }
+                case 'doc':
+                case 'docx': { type = NS_File.Type.WORD; break; }
+                case 'gif': { type = NS_File.Type.GIFIMAGE; break; }
+                case 'gzip': { type = NS_File.Type.GZIP; break; }
+                case 'html': { type = NS_File.Type.HTMLDOC; break; }
+                case 'jpg':
+                case 'jpeg': { type = NS_File.Type.JPGIMAGE; break; }
+                case 'json': { type = NS_File.Type.JSON; break; }
+                case 'pdf': { type = NS_File.Type.PDF; break; }
+                case 'png': { type = NS_File.Type.PNGIMAGE; break; }
+                case 'svg': { type = NS_File.Type.SVG; break; }
+                case 'xls':
+                case 'xlsx': { type = NS_File.Type.EXCEL; break; }
+                case 'xml': { type = NS_File.Type.XMLDOC; break; }
+                case 'zip': { type = NS_File.Type.ZIP; break; }
+                default: { type = NS_File.Type.PLAINTEXT; break; }
+            }
+
+            return type;
+        };
+
+        /**
+         * @function parseLast
+         * @param {string} name
+         * @description Parse the last part of a string
+         * @example parseLast('file.txt');
+         * @return {string}
+         *
+         */
+        const parseLast = (name) => {
+            if (!name) {
+                return '';
+            }
+
+            let arrParts = name.split('.');
+            if (arrParts.length &lt;= 0) {
+                return '';
+            }
+
+            return arrParts[arrParts.length - 1].toLowerCase();
+        };
+
+        return {
+            create (options) {
+                let title = `${MODULE}.Create`;
+
+                if (!options.folder) {
+                    return { status: false, error: 'Missing required value: Folder.' };
+                }
+
+                if (!options.name) {
+                    options.name = `file_${(new Date()).getTime()}.txt`;
+                    options.fileType = NS_File.Type.PLAINTEXT;
+                }
+
+                if (!options.fileType) {
+                    options.fileType = NS_File.Type.PLAINTEXT;
+                }
+
+                let fileOptions = {
+                    fileType: options.name ? getType({ name: options.name }) : NS_File.Type.PLAINTEXT,
+                    folder: options.folder,
+                    name: options.name || `file_${(new Date()).getTime()}.txt`,
+                };
+                fileOptions.contents = options.getContents();
+
+                try {
+                    let fileObject = NS_File.create(fileOptions);
+                    let fileId = fileObject.save();
+
+                    return {
+                        status: true,
+                        data: {
+                            id: fileId,
+                            name: options.name
+                        }
+                    };
+                }
+                catch (ex) {
+                    let errorMessage = ex.message || ex.toString();
+                    nsLog.error({ title, details: errorMessage });
+                    return { status: false, error: errorMessage };
+                }
+            },
+            get (options) {
+                let title = `${MODULE}.Get`;
+                let { name } =  options;
+                let fileId = 0;
+
+                if (!name) {
+                    nsLog.debug({ title: title, details: 'Missing required value: File Name.' });
+                    return fileId;
+                }
+                let fileSearch = SS_Search.create({
+                    type: 'file',
+                    filters: [
+                        [ 'name', 'startswith', `${name}` ]
+                    ]
+                });
+
+                let fileResults = fileSearch.getFirst();
+                if (fileResults.length &lt;= 0) {
+                    nsLog.debug({ title: title, details: `No file record found with Name = ${name}.` });
+                    return fileId;
+                }
+
+                return fileResults[0].id;
+            },
+            load (options) {
+                let title = `${MODULE}.Load`;
+                let fileObject = null;
+
+                if (options.id) {
+                    return NS_File.load({ id: options.id });
+                }
+
+                if (!options.name) {
+                    nsLog.error({ title: title, details: `Missing required value: File ID or Name.` });
+                    return fileObject;
+                }
+
+                let fileId = this.get({ name: options.name });
+                if (fileId &lt;= 0) { return fileObject; }
+
+                return NS_File.load({ id: fileId });
+            },
+            read (options) {
+                let title = `${MODULE}.Read`;
+                let fileObject = null;
+                let fileContents = '';
+
+                if (options.id) {
+                    fileObject = NS_File.load({ id: options.id });
+                    if (!fileObject) { return fileContents; }
+
+                    return fileObject.getContents();
+                }
+
+                if (!options.name) {
+                    nsLog.error({ title: title, details: `Missing required value: File ID or Name.` });
+                    return fileContents;
+                }
+
+                fileObject = this.load({ name: options.name });
+                fileContents = fileObject.getContents();
+
+                return fileContents;
+            }
+        };
+    }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

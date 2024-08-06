@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.12/themes/default/style.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.12/jstree.min.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+
+
+        </div>
+        <div class="menu">
+
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+
+            <nav>
+
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+
+
+
+
+
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section>
+        <article><h1>NetSuite Scripts Documentation</h1>
+<h2>Overview</h2>
+<p>This repository contains various NetSuite scripts to handle customer statements, dunning letters, and related tasks. The scripts are written using SuiteScript 2.1 and are organized into different categories like Client Scripts, Suitelets, and Map/Reduce Scripts.</p>
+<embed type="text/html" src="../high-level-dependencies.html"  width="90%" height="800px">
+
+            <h2> Script Record Tree</h2>
+            <div id="jstree"></div>
+<h2>File Structure</h2>
+<ul>
+<li><strong>common</strong>
+<ul>
+<li>Contains common modules used across different scripts.</li>
+<li><strong>Files:</strong>
+<ul>
+<li><code>SS_Constants.js</code></li>
+<li><code>SS_CurrentRecord.js</code></li>
+<li><code>SS_DataTable.js</code></li>
+<li><code>SS_DataTableBackend.js</code></li>
+<li><code>SS_DataTableSuitelet.js</code></li>
+<li><code>SS_DataTableTask.js</code></li>
+<li><code>SS_Dialog.js</code></li>
+<li><code>SS_DunningLetters.js</code></li>
+<li><code>SS_DunningStatements.js</code></li>
+<li><code>SS_File.js</code></li>
+<li><code>SS_Format.js</code></li>
+<li><code>SS_Query.js</code></li>
+<li><code>SS_Record.js</code></li>
+<li><code>SS_Request.js</code></li>
+<li><code>SS_Runtime.js</code></li>
+<li><code>SS_Script.js</code></li>
+<li><code>SS_Search.js</code></li>
+<li><code>SS_String.js</code></li>
+<li><code>SS_Task.js</code></li>
+<li><code>SS_Transaction.js</code></li>
+<li><code>SS_UI.js</code></li>
+</ul>
+</li>
+<li><strong>DataTable_Template.html</strong>: HTML template for DataTable</li>
+</ul>
+</li>
+</ul>
+<h2>Scripts</h2>
+<h3>Client Scripts</h3>
+<ol>
+<li><strong>SS_CS_DunningStatements.js</strong></li>
+</ol>
+<ul>
+<li>Manages dunning statements for customers.</li>
+<li>Dependencies: <code>SS_Constants</code>, <code>SS_CurrentRecord</code>, <code>SS_Dialog</code>, <code>SS_Format</code>, <code>SS_String</code></li>
+</ul>
+<ol start="2">
+<li><strong>SS_CS_DunningLettersInv.js</strong></li>
+</ol>
+<ul>
+<li>Manages dunning letters for invoices.</li>
+<li>Dependencies: <code>SS_Constants</code>, <code>SS_CurrentRecord</code>, <code>SS_Dialog</code>, <code>SS_Format</code>, <code>SS_String</code></li>
+</ul>
+<ol start="3">
+<li><strong>SS_CS_CustomerNotices.js</strong></li>
+</ol>
+<ul>
+<li>Manages customer notices.</li>
+<li>Dependencies: <code>SS_Constants</code>, <code>SS_CurrentRecord</code>, <code>SS_Dialog</code>, <code>SS_Format</code>, <code>SS_String</code></li>
+</ul>
+<ol start="4">
+<li><strong>SS_CS_DunningLetters.js</strong></li>
+</ol>
+<ul>
+<li>Manages dunning letters for customers.</li>
+<li>Dependencies: <code>SS_Constants</code>, <code>SS_CurrentRecord</code>, <code>SS_Dialog</code>, <code>SS_Format</code>, <code>SS_String</code></li>
+</ul>
+<h3>Suitelets</h3>
+<ol>
+<li><strong>SS_SL_DataTables.js</strong></li>
+</ol>
+<ul>
+<li>Renders the DataTable for customer statements.</li>
+<li>Dependencies: <code>SS_DataTableSuitelet</code></li>
+</ul>
+<ol start="2">
+<li><strong>SS_SL_DataTables_Backend.js</strong></li>
+</ol>
+<ul>
+<li>Processes backend operations for DataTable.</li>
+<li>Dependencies: <code>SS_DataTableBackend</code></li>
+</ul>
+<ol start="3">
+<li><strong>R-IT_FRL_SL_DunningStatements.js</strong></li>
+</ol>
+<ul>
+<li>Handles dunning statements through a Suitelet.</li>
+<li>Dependencies: <code>SS_Constants</code>, <code>SS_DataTableBackend</code>, <code>SS_Search</code>, <code>SS_Record</code></li>
+</ul>
+<h3>Library Scripts</h3>
+<ol>
+<li><strong>SS_Lib_CustomerStatements.js</strong></li>
+</ol>
+<ul>
+<li>Manages customer statements, builds search filters, creates statement tasks.</li>
+<li>Dependencies: <code>SS_Constants</code>, <code>SS_File</code>, <code>SS_Record</code>, <code>SS_Script</code>, <code>SS_Search</code>, <code>SS_String</code>, <code>SS_UI</code>, <code>SS_Url</code>, <code>SS_Transaction</code></li>
+</ul>
+<h3>Map/Reduce Scripts</h3>
+<ol>
+<li><strong>SS_MR_DataTableTask.js</strong></li>
+</ol>
+<ul>
+<li>Handles data table tasks using Map/Reduce.</li>
+<li>Dependencies: <code>N/record</code>, <code>N/search</code>, <code>N/runtime</code>, <code>N/format</code>, <code>N/render</code>, <code>N/email</code>, <code>N/xml</code>, <code>N/file</code>, <code>SS_Constants</code></li>
+</ul>
+<h3>Script Files</h3>
+<ul>
+<li><strong>SS_CS_DunningStatements.js</strong></li>
+<li><strong>SS_CS_DunningLettersInv.js</strong></li>
+<li><strong>SS_CS_CustomerNotices.js</strong></li>
+<li><strong>SS_CS_DunningLetters.js</strong></li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+            </div>
+
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+    <script>
+        $(document).ready(function() {
+            const data = [
+                {
+                    "text": "Suitelet: Strat SL Data Tables",
+                    "children": [
+                        {
+                            "text": "Script ID: customscript_ss_sl_dt"
+                        },
+                        {
+                            "text": "Script File: /SuiteScripts/SS/DataTable Suitelets/SS_SL_DataTables.js"
+                        },
+                        {
+                            "text": "Script Custom Fields",
+                            "children": [
+                                {
+                                    "text": "Type",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_sl_dt_type" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: Type" },
+                                        { "text": "Select Record Type: customlist_ss_sl_dt_types" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Script Deployments",
+                            "children": [
+                                {
+                                    "text": "Deployment: Strat SL Customer Statements",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_cust_stm" },
+                                        { "text": "Type: customlist_ss_sl_dt_types.val_1150684_5678674_sb2_690" },
+                                        { "text": "Title: Strat SL Customer Statements" }
+                                    ]
+                                },
+                                {
+                                    "text": "Deployment: Strat SL Dunning Letters",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_dning_lttr" },
+                                        { "text": "Type: customlist_ss_sl_dt_types.val_1740006_5678674_sb2_302" },
+                                        { "text": "Title: Strat SL Dunning Letters" }
+                                    ]
+                                },
+                                {
+                                    "text": "Deployment: Strat SL Dunning Letters Invoice",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_dning_lttr_inv" },
+                                        { "text": "Type: customlist_ss_sl_dt_types.val_1740370_5678674_sb2_528" },
+                                        { "text": "Title: Strat SL Dunning Letters Invoice" }
+                                    ]
+                                },
+                                {
+                                    "text": "Deployment: Strat SL Customer Notices",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_customer_notices" },
+                                        { "text": "Type: customlist_ss_sl_dt_types.val_1740625_5678674_sb2_184" },
+                                        { "text": "Title: Strat SL Customer Notices" }
+                                    ]
+                                },
+                                {
+                                    "text": "Deployment: Strat SL Invoice Media Fulfillment",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_inv_media_fulfillment" },
+                                        { "text": "Type: customlist_ss_sl_dt_types.val_1740312_5678674_sb2_458" },
+                                        { "text": "Title: Strat SL Invoice Media Fulfillment" }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "text": "Suitelet: Strat SL Data Tables Backend",
+                    "children": [
+                        {
+                            "text": "Script ID: customscript_ss_sl_dt_backend"
+                        },
+                        {
+                            "text": "Script File: /SuiteScripts/SS/DataTable Suitelets/SS_SL_DataTables_Backend.js"
+                        },
+                        {
+                            "text": "Script Custom Fields",
+                            "children": [
+                                {
+                                    "text": "Search: Data Table Rows",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_sl_dt_backend_row_search" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: Search: Data Table Rows" },
+                                        { "text": "Select Record Type: -119" }
+                                    ]
+                                },
+                                {
+                                    "text": "Search: In Progress Tasks",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_sl_dt_backend_inprog_tasks" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: Search: In Progress Tasks" },
+                                        { "text": "Select Record Type: -119" }
+                                    ]
+                                },
+                                {
+                                    "text": "Task File Folder",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_sl_dt_backend_task_folder" },
+                                        { "text": "Field Type: TEXT" },
+                                        { "text": "Label: Task File Folder" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Script Deployments",
+                            "children": [
+                                {
+                                    "text": "Deployment: SL DT Backend - Dunning Statements",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_dt_backend_dunstm" },
+                                        { "text": "In Progress Tasks: customsearch_ss_dt_tasks_inprog" },
+                                        { "text": "Row Search: customsearch_ss_dunning_4_4" },
+                                        { "text": "Task Folder: 421266" },
+                                        { "text": "Title: SL DT Backend - Dunning Statements" }
+                                    ]
+                                },
+                                {
+                                    "text": "Deployment: SL DT Backend - Dunning Letters",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_dt_backend_dunlettrs" },
+                                        { "text": "In Progress Tasks: customsearch_ss_dt_tasks_inprog" },
+                                        { "text": "Row Search: customsearch_ss_dunning_4_4" },
+                                        { "text": "Task Folder: 421266" },
+                                        { "text": "Title: SL DT Backend - Dunning Letters" }
+                                    ]
+                                },
+                                {
+                                    "text": "Deployment: SL DT Backend - Customer Notices",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_dt_backnd_cutsm_notic" },
+                                        { "text": "In Progress Tasks: customsearch_ss_dt_tasks_inprog" },
+                                        { "text": "Row Search: customsearch_ss_dunning_4_4" },
+                                        { "text": "Task Folder: 421266" },
+                                        { "text": "Title: SL DT Backend - Customer Notices" }
+                                    ]
+                                },
+                                {
+                                    "text": "Deployment: SL DT Backend - Dunning Letters Inv",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_dt_backnd_dnlttrs_inv" },
+                                        { "text": "In Progress Tasks: customsearch_ss_dt_tasks_inprog" },
+                                        { "text": "Row Search: customsearch_ss_dunning_3_2" },
+                                        { "text": "Task Folder: 421266" },
+                                        { "text": "Title: SL DT Backend - Dunning Letters Inv" }
+                                    ]
+                                },
+                                {
+                                    "text": "Deployment: SL DT Backend - Invoice Media Fulfillment",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_sl_dt_backend_invmedff" },
+                                        { "text": "In Progress Tasks: customsearch_ss_dt_tasks_inprog" },
+                                        { "text": "Row Search: customsearch7083" },
+                                        { "text": "Task Folder: 421266" },
+                                        { "text": "Title: SL DT Backend - Invoice Media Fulfillment" }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "text": "Map/Reduce Script: SS | MR | SEND DUNNING EMAIL",
+                    "children": [
+                        {
+                            "text": "Script ID: customscript_ss_mr_send_dunning_email"
+                        },
+                        {
+                            "text": "Script File: /SuiteScripts/SS/DataTable Suitelets/SS_MR_DunningStatements.js"
+                        },
+                        {
+                            "text": "Script Custom Fields",
+                            "children": [
+                                {
+                                    "text": "DATA TABLE TASK",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_mr_dun_stm_task" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: DATA TABLE TASK" },
+                                        { "text": "Select Record Type: customrecord_ss_dt_task" }
+                                    ]
+                                },
+                                {
+                                    "text": "INVOICE SEARCH",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_mr_dun_stm_invoices" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: INVOICE SEARCH" },
+                                        { "text": "Select Record Type: -119" }
+                                    ]
+                                },
+                                {
+                                    "text": "Dunning Search",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_mr_dun_stm_dunning" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: Dunning Search" },
+                                        { "text": "Select Record Type: -119" }
+                                    ]
+                                },
+                                {
+                                    "text": "Dunning Message Search",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_mr_dun_stm_dun_msg" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: Dunning Message Search" },
+                                        { "text": "Select Record Type: -119" }
+                                    ]
+                                },
+                                {
+                                    "text": "Email Message Search",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_mr_dun_stm_email_msg" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: Email Message Search" },
+                                        { "text": "Select Record Type: -119" }
+                                    ]
+                                },
+                                {
+                                    "text": "Statement Form",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_mr_dun_stm_form" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: Statement Form" },
+                                        { "text": "Select Record Type: -171" }
+                                    ]
+                                },
+                                {
+                                    "text": "Customers Array",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_custmrs_array" },
+                                        { "text": "Field Type: CLOBTEXT" },
+                                        { "text": "Label: Customers Array" }
+                                    ]
+                                },
+                                {
+                                    "text": "Invoice Group Components Search",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_mr_dun_stm_invgrp_comp" },
+                                        { "text": "Field Type: SELECT" },
+                                        { "text": "Label: Invoice Group Components Search" },
+                                        { "text": "Select Record Type: -119" }
+                                    ]
+                                },
+                                {
+                                    "text": "File Cabinet Folder for Invoice PDFs",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_mr_dun_stm_invpdf_folder" },
+                                        { "text": "Field Type: INTEGER" },
+                                        { "text": "Label: File Cabinet Folder for Invoice PDFs" }
+                                    ]
+                                },
+                                {
+                                    "text": "Invoice Group Email Template Id",
+                                    "children": [
+                                        { "text": "Script ID: custscript_ss_mr_dun_stm_invgrp_template" },
+                                        { "text": "Field Type: INTEGER" },
+                                        { "text": "Label: Invoice Group Email Template Id" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Script Deployments",
+                            "children": [
+                                {
+                                    "text": "Deployment: SS | MR | SEND DUNNING EMAIL",
+                                    "children": [
+                                        { "text": "Script ID: customdeploy_ss_mr_send_dunning_email" },
+                                        { "text": "Buffersize: 1" },
+                                        { "text": "Concurrency Limit: 1" },
+                                        { "text": "In Progress Tasks: customsearch_ss_dt_tasks_inprog" },
+                                        { "text": "Dunning Message Search: customsearch_ss_dunning_messages" },
+                                        { "text": "Dunning Search: customsearch_ss_dunnings" },
+                                        { "text": "Email Message Search: customsearch_ss_email_messages" },
+                                        { "text": "Statement Form: custform_190_5678674_787" },
+                                        { "text": "Invoice Group Components Search: customsearch_ss_dunning_2_2" },
+                                        { "text": "Invoice Group Email Template Id: 221" },
+                                        { "text": "Invoice Search: customsearch_ss_dunning_2" },
+                                        { "text": "File Cabinet Folder for Invoice PDFs: 118481" },
+                                        { "text": "Title: SS | MR | SEND DUNNING EMAIL" },
+                                        { "text": "Status: NOTSCHEDULED" },
+                                        { "text": "Yield After Minutes: 60" },
+                                        { "text": "Run As Role: ADMINISTRATOR" }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+
+            ];
+
+            $('#jstree').jstree({
+                'core': {
+                    'data': data
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

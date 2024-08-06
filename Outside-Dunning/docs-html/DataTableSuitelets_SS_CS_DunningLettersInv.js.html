@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> DataTableSuitelets/SS_CS_DunningLettersInv.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>DataTableSuitelets/SS_CS_DunningLettersInv.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @NApiVersion         2.1
+ * @NScriptType         ClientScript
+ * @NModuleScope        SameAccount
+ *
+ * @module              SS_CS_DunningLettersInv
+ * @description         Client script for the Dunning Letters/Invoices page
+ *
+ * @requires           SS_Constants
+ * @requires           SS_CurrentRecord
+ * @requires           SS_Dialog
+ * @requires           SS_Format
+ * @requires           SS_String
+ *
+ *
+ *
+ */
+
+define(
+    [
+        '../common/SS_Constants',
+        '../common/SS_CurrentRecord',
+        '../common/SS_Dialog',
+        '../common/SS_Format',
+        '../common/SS_String'
+    ],
+    (
+        SS_Constants,
+        SS_CR,
+        SS_Dialog,
+        SS_Format,
+        SS_String
+    ) => {
+
+        /**
+         * @name TABLE_ID
+         * @description ID of the DataTable element
+         * @constant
+         * @type {string}
+         */
+        const TABLE_ID = 'custpage_table';
+
+        /**
+         * @name TITLE
+         * @description Title of the Suitelet
+         * @type {string}
+         */
+        const TITLE = 'Send Customer Statements';
+        let DATA_TABLE = null;
+
+
+        /**
+         * @function applyFilters
+         * @description Collects filter values from the current record, sends a request to fetch data based on these filters, and displays the data in a DataTable.
+         * @returns {void}
+         *
+         * @example SS_CS_CustomerNotices.applyFilters();
+         */
+        const applyFilters = () => {
+            let thisRecord = SS_CR.get();
+            let params = [];
+
+            let filters = SS_Constants.Forms.DUNNING_STATEMENTS.Fields.filter(f => f.filter === true);
+            for (let i = 0, count = filters.length; i &lt; count; i++) {
+                let key = SS_String.normalize(filters[i].label);
+                console.log(`key = "${key}"`);
+
+                let value = thisRecord.getValue({ fieldId: filters[i].id });
+                if (['lastcommunication'].includes(key)) {
+                    value = thisRecord.getText({ fieldId: filters[i].id });
+                }
+                if (!value) { continue; }
+
+                params.push(`${key}=${value}`);
+            }
+            console.log('params', params);
+
+            sendRequest({
+                urlParams: params,
+                action: 'search',
+                type: SS_Constants.CustomLists.DataTableSuiteletTypes.DUNNING_STATEMENTS,
+                success: (data) => {
+                    console.log('backend response', data);
+                    if (data.status === false) {
+                        alert(data.error);
+                        return;
+                    }
+
+                    window.suiteletTableData = data.output;
+                    initDataTable();
+                    getById('datatable_container').classList.remove('hidden');
+                }
+            });
+        };
+
+
+        /**
+         * @function buildUrlWithParams
+         * @description Builds a URL with the given parameters
+         * @param options
+         * @param {string} options.action - Action to be performed
+         * @param {string} options.type - Type of Suitelet
+         * @param {Array} options.urlParams - Array of URL parameters
+         *
+         * @return {string}
+         *
+         * @example buildUrlWithParams({ action: 'search', type: 'customer_notices', urlParams: ['param1=value1', 'param2=value2'] });
+         */
+        const buildUrlWithParams = (options) => {
+            let urlPath = window.urlValues.Backend;
+            let { action, type, urlParams } = options;
+            let parts = [ urlPath, `action=${action}`, `sltype=${type}` ];
+
+            if (urlParams) {
+                if (urlParams.length > 0) {
+                    parts.push(urlParams.join('&amp;'));
+                }
+            }
+            console.log(`parts = ${parts.length}`, parts);
+            return parts.join('&amp;');
+        };
+
+        /**
+         * @function getById
+         * @description Get an element by its ID
+         * @param {string} id - ID of the element
+         * @returns {Element}
+         */
+        const getById = (id) => {
+            return document.getElementById(id);
+        };
+
+        /**
+         * @function getSelectedIds
+         * @description Get the selected row IDs from the DataTable
+         * @returns {Array}
+         * @returns {Array} selectedIds
+         */
+        const getSelectedIds = () => {
+            let selectedRows = DATA_TABLE.column(0).checkboxes.selected();
+            console.log('selectedRows ', selectedRows);
+
+            let selectedIds = [];
+            jQuery.each(selectedRows, (index, rowValue) => {
+                console.log(`getSelectedIds index=${index}`, rowValue);
+                let inputText = query(`#${TABLE_ID} input[type="text"][data-override-client="${rowValue}"]`);
+                console.log(`#${TABLE_ID} input[type="text"][data-override-client="${rowValue}"]`, inputText);
+                console.log('input value', inputText.value);
+                selectedIds.push({
+                    id: rowValue,
+                    override: inputText.value
+                });
+            });
+            selectedIds = [ ...new Set(selectedIds) ];
+            console.log({ orders: selectedIds });
+
+            return selectedIds[0];
+        };
+
+        /**
+         * @function initDataTable
+         * @description Configures and initializes the DataTable with the fetched data
+         * @returns {void}
+         *
+         * @example SS_CS_CustomerNotices.initDataTable();
+         */
+        const initDataTable = () => {
+            if (DataTable.isDataTable(`#${TABLE_ID}`)) {
+                console.log(`destroying ${TABLE_ID}`);
+                jQuery(`#${TABLE_ID}`).DataTable().destroy();
+                getById(TABLE_ID).textContent = '';
+            }
+
+            // let displayData = window.suiteletTableData?.display;
+            let displayData = window.suiteletTableData;
+            if (!displayData) {
+                console.log('displayData is NULL');
+                return;
+            }
+
+            console.log('displayData', displayData);
+            let dataColumns = displayData.columns;
+            let columnIndexes = {};
+            for (let i = 0, count = dataColumns.length; i &lt; count; i++) {
+                let col = dataColumns[i];
+                columnIndexes[col.data] = dataColumns.findIndex(c => c.data === col.data);
+            }
+            console.log(`columnIndexes`, columnIndexes);
+
+            DATA_TABLE = jQuery(`#${TABLE_ID}`).DataTable({
+                columnDefs: [{
+                    targets: 0,
+                    checkboxes: {
+                        selectAllPages: false,
+                        selectRow: true
+                    }
+                },
+                //     {
+                //     targets: dataColumns.findIndex(c => c.data === 'amountpastdueusd'),
+                //     className: 'dt-body-right',
+                //     render: function (data) {
+                //         return columnIndexes.amountpastdueusd >= 0 ? DataTable.render.number(',', '.', 2, '$').display(data) : data;
+                //     }
+                // },
+                    {
+                    targets: dataColumns.findIndex(c => c.data === 'amountdue'),
+                    className: 'dt-body-right',
+                    render: function (data) {
+                        return columnIndexes.openbalanceusd >= 0 ? DataTable.render.number(',', '.', 2, '$').display(data) : data;
+                    }
+                },
+                    {
+                    targets: dataColumns.findIndex(c => c.data === 'overrideemailrecipients') || -1,
+                    render: function (data) {
+                        return columnIndexes.overrideemailrecipients >= 0 ?
+                            `&lt;input type="text" style="padding:4px 6px; width: 250px; font-size: inherit;" data-override-client="${data.trim()}">` : data;
+                    }
+                 }
+                ],
+                columns: dataColumns,
+                data: displayData.rows,
+                lengthMenu: [ 1000 ],
+                pageLength: 1000,
+                pagingType: 'full_numbers',
+                order: [[1, 'asc']],
+                select: { style: 'multi' }
+            });
+        };
+
+
+        /**
+         * @function pageInit
+         * @description Sets up the page, applies filters to retrieve data from the backend, and initializes the DataTable for displaying customer data.
+         * @param {Object} context - Current context
+         * @returns {void}
+         *
+         * @example SS_CS_CustomerNotices.pageInit(context);
+         */
+        const pageInit = (context) => {
+            console.log('hello');
+            window.onbeforeunload = null;
+
+            let tableElement = getById(TABLE_ID);
+            console.log(`pageInit`, tableElement);
+            if (!tableElement) {
+                return;
+            }
+
+            let layoutTable = tableElement.closest('.uir-outside-fields-table');
+            layoutTable.style.width = "100%";
+            layoutTable.style.margin = "20px 0 0 0";
+
+            let urlValues = context.currentRecord.getValue({ fieldId: 'custpage_url_values' });
+            console.log(`urlValues => ${urlValues}`);
+            if (urlValues) {
+                window.urlValues = JSON.parse(urlValues);
+            }
+            applyFilters();
+        };
+
+
+        /**
+         * @function query
+         * @description Get an element by its selector using document.querySelector
+         * @param {string} selector - Selector of the element
+         * @returns {Element}
+         */
+        const query = (selector) => {
+            return document.querySelector(selector);
+        };
+
+        /**
+         * @function saveRecord
+         * @description Validates the selected rows, confirms the action with the user, and sends a request to generate and send customer statements.
+         * @param {Object} context - Current context
+         * @returns {boolean}
+         */
+        const saveRecord = (context) => {
+            if (!DataTable.isDataTable(`#${TABLE_ID}`)) {
+                SS_Dialog.alert({
+                    title: 'WARNING: No data found.',
+                    message: 'Click on the "Apply Filters" button to retrieve data from the server.'
+                });
+                return;
+            }
+
+            let selectedIds = getSelectedIds();
+
+            if (selectedIds.length &lt;= 0) {
+                SS_Dialog.alert({
+                    title: 'WARNING: No rows selected.',
+                    message: 'Please select at least one row to generate.'
+                });
+                return;
+            }
+            console.log('selectedIds', selectedIds);
+
+            let statementCount = selectedIds.length;
+            SS_Dialog.confirm({
+                title: TITLE,
+                message: `You are about to send ${statementCount} dunning letter ${ statementCount > 1 ? 's' : '' }. Are you sure you want to proceed?`
+            }).then(result => {
+                console.log('dialog selectedIds', selectedIds);
+                console.log('result', result);
+                if (!result) {
+                    return;
+                }
+
+                console.log('sendCustomerStatementRequest', selectedIds );
+                // selectedIds.forEach(idObj => {
+                //     idObj.level = 'Statement';
+                // });
+                selectedIds.level = 'Statement';
+
+                var selectedIdsUpdate = [selectedIds];
+
+                console.log(' sendDunningLetterRequest selectedIds', selectedIdsUpdate);
+                sendDunningLetterRequest(selectedIdsUpdate);
+            });
+            return false;
+        };
+
+        /**
+         * @function sendDunningLetterRequest
+         * @description Send a request to generate and send dunning letters
+         * @param {Array} list - List of selected IDs
+         * @returns {void}
+         */
+        const sendDunningLetterRequest = (list) => {
+            console.log('sendCustomerStatementRequest START', list)
+            sendRequest({
+                action: 'dunning_letter_inv',
+                requestParams: {
+                    method: 'post',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ list })
+                },
+                success: (data) => {
+                    console.log('POST backend response', data);
+                    if (!data.status) {
+                        SS_Dialog.alert({
+                            message: data.error,
+                            title: `ERROR: ${TITLE}`
+                        });
+                        return;
+                    }
+
+                    console.log('here...');
+                    SS_Dialog.alert({
+                        message: `The task has been queued successfully.&lt;br>&lt;br>&lt;a href="${data.url}" target="_blank">View Task Status&lt;/a>`,
+                        title: `SUCCESS: ${TITLE}`
+                    });
+                    applyFilters();
+                },
+                type: SS_Constants.CustomLists.DataTableSuiteletTypes.DUNNING_LETTERS_INV
+            });
+        };
+
+        /**
+         * @function sendRequest
+         * @description Send a request to the backend
+         * @param {Object} options - Request options
+         * @returns {void}
+         *
+         */
+        const sendRequest = (options) => {
+            const TITLE = `sendRequest`;
+            console.log('sendRequest options', JSON.stringify(options) );
+            let { action, requestParams, success } = options;
+            if (!action) {
+                console.log(`Missing action.`);
+                return;
+            }
+
+            console.log(`sendRequest parameters`, requestParams);
+            let applyUrl = buildUrlWithParams(options);
+            // console.log('applyUrl', applyUrl);
+            // if (!applyUrl) { return; }
+
+            // applyUrl = [ applyUrl, `action=${options.action}` ].join('&amp;');
+            console.log(`applyUrl ==> `, applyUrl);
+            // return;
+
+            fetch(applyUrl, requestParams)
+                .then(data => data.json())
+                .then(options.success);
+        };
+
+        /**
+         * @function triggerbtn_II
+         * @description Trigger the action for the LEVEL 1 button
+         * @param context
+         *
+         * @return {boolean}
+         *
+         * @example SS_CS_DunningLettersInv.triggerbtn_II(context);
+         */
+        const triggerbtn_II = (context) => {
+
+            let level = SS_Constants.Forms.DUNNING_LETTERS.Levels.level_1;
+            console.log('level', level);
+            let selectedIds = getAllDataSelectedIdsByLevel(level);
+            if (selectedIds.length &lt;= 0) {
+                SS_Dialog.alert({
+                    title: 'WARNING: No rows selected.',
+                    message: 'Please select at least one row to generate.'
+                });
+                return;
+            }
+            // let statementCount = selectedIds.length;
+            if(selectedIds.length &lt;= 0){
+                return
+            }
+            else{
+                SS_Dialog.confirm({
+                    title: 'Option Selected',
+                    message: `Do you want to send the Dunning Letters with the option 'LEVEL 1'?`
+                }).then(result => {
+                    if (!result) {
+                        return;
+                    }
+
+                    sendDunningLetterRequest(selectedIds);
+                });
+                return false;
+            }
+
+        };
+
+        /**
+         * @function triggerbtn_III
+         * @description Trigger the action for the LEVEL 2 button
+         * @param context
+         * @return {boolean}
+         */
+        const triggerbtn_III = (context) => {
+
+            let level = SS_Constants.Forms.DUNNING_LETTERS.Levels.level_2;
+            let selectedIds = getAllDataSelectedIdsByLevel(level);
+            if (selectedIds.length &lt;= 0) {
+                SS_Dialog.alert({
+                    title: 'WARNING: No rows selected.',
+                    message: 'Please select at least one row to generate.'
+                });
+                return;
+            }
+            // let statementCount = selectedIds.length;
+            SS_Dialog.confirm({
+                title: 'Option Selected',
+                message: `Do you want to send the Dunning Letters with the option 'LEVEL 2'?`
+            }).then(result => {
+                if (!result) {
+                    return;
+                }
+
+                sendDunningLetterRequest(selectedIds);
+            });
+            return false;
+        };
+
+        /**
+         * @function triggerbtn_IV
+         * @description Trigger the action for the LEVEL 3 button
+         *
+         *
+         * @param context
+         * @return {boolean}
+         */
+        const triggerbtn_IV = (context) => {
+
+            let level = SS_Constants.Forms.DUNNING_LETTERS.Levels.level_3;
+            let selectedIds = getAllDataSelectedIdsByLevel(level);
+            if (selectedIds.length &lt;= 0) {
+                SS_Dialog.alert({
+                    title: 'WARNING: No rows selected.',
+                    message: 'Please select at least one row to generate.'
+                });
+                return;
+            }
+            // let statementCount = selectedIds.length;
+            SS_Dialog.confirm({
+                title: 'Option Selected',
+                message: `Do you want to send the Dunning Letters with the option 'LEVEL 3'?`
+            }).then(result => {
+                if (!result) {
+                    return;
+                }
+
+                sendDunningLetterRequest(selectedIds);
+            });
+            return false;
+        };
+
+        /**
+         * @function triggerbtn_V
+         * @description Trigger the action for the LEVEL 4 button
+         *
+         * @param context
+         * @return {boolean}
+         */
+        const triggerbtn_V = (context) => {
+
+            let level = SS_Constants.Forms.DUNNING_LETTERS.Levels.level_4;
+            let selectedIds = getAllDataSelectedIdsByLevel(level);
+            if (selectedIds.length &lt;= 0) {
+                SS_Dialog.alert({
+                    title: 'WARNING: No rows selected.',
+                    message: 'Please select at least one row to generate.'
+                });
+                return;
+            }
+            // let statementCount = selectedIds.length;
+            SS_Dialog.confirm({
+                title: 'Option Selected',
+                message: `Do you want to send the Dunning Letters with the option 'LEVEL 4'?`
+            }).then(result => {
+                if (!result) {
+                    return;
+                }
+
+                sendDunningLetterRequest(selectedIds);
+            });
+            return false;
+        };
+
+        /**
+         * @function getAllDataSelectedIdsByLevel
+         * @description Get all selected rows by level
+         * @param level - the level of the dunning letter
+         * @return {Array} selectedIds
+         *
+         */
+        const getAllDataSelectedIdsByLevel = (level) => {
+            let displayData = window.suiteletTableData;
+            let selectedIds = [];
+            if (!displayData) {
+                console.log('displayData is NULL');
+                return selectedIds;
+            }
+            else{
+                selectedIds = getSelectedIds();
+
+                console.log('selectedIds 1', selectedIds);
+                if (selectedIds.length &lt;= 0) {
+                    SS_Dialog.alert({
+                        title: 'WARNING: No rows selected.',
+                        message: 'Please select at least one row to generate.'
+                    });
+                    return;
+                }
+                // selectedIds.forEach(idObj => {
+                //     idObj.level = level;
+                // });
+
+                selectedIds.level = level;
+                var selectedIdsUpdate = [selectedIds];
+            }
+
+            console.log('selectedIds levek', selectedIdsUpdate);
+            return selectedIdsUpdate;
+        };
+
+
+
+
+        return {
+            applyFilters,
+            pageInit,
+            saveRecord,
+            triggerbtn_II,
+            triggerbtn_III,
+            triggerbtn_IV,
+            triggerbtn_V
+        };
+    }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> common/SS_DataTableSuitelet.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>common/SS_DataTableSuitelet.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @NApiVersion         2.1
+ * @NModuleScope        SameAccount
+ *
+ * @fileoverview       DataTable Suitelet module for rendering a DataTable Suitelet
+ * @module             SS_DataTableSuitelet
+ * @public
+ *
+ * @requires           NS_Url
+ * @requires           SS_Constants
+ * @requires           SS_File
+ * @requires           SS_Script
+ * @requires           SS_UI
+ * @requires           SS_Url
+ * @requires           SS_DunningStatements
+ *
+ */
+
+define(
+    [
+        './SS_Constants',
+        './SS_File',
+        './SS_Script',
+        './SS_UI',
+        './SS_Url',
+
+        './SS_DunningStatements',
+    ],
+    (
+        SS_Constants,
+        SS_File,
+        SS_Script,
+        SS_UI,
+        SS_Url,
+
+        SS_DunningStatements,
+    ) => {
+
+        /**
+         * @name MODULE
+         * @type {string}
+         *
+         * @description Module name for logging
+         */
+        const MODULE = `SS|DataTableSuitelet`;
+
+        /**
+         * @name TYPES
+         * @type {Object}
+         *
+         * @description Object containing the Suitelet types
+         */
+        const TYPES = SS_Constants.CustomLists.DataTableSuiteletTypes;
+
+        /* const createStatementTask = (options) => {
+            let title = `${MODULE}.CreateStatementTask`;
+            let { parameters } = options;
+            log.debug({ title: `${title} parameters`, details: JSON.stringify(parameters) });
+
+            let taskRecord = createStatementTaskRecord(options);
+            if (!taskRecord.status) {
+                return taskRecord;
+            }
+
+            log.debug({ title: TITLE, details: `taskRecord = ${taskRecord.data}` });
+
+            *** let params = {};
+            params[SS_Constants.ScriptParameters.MapReduceTaskRecord] = taskRecord.data;
+
+            let taskStatus = SS_Task.createMapReduceTask({
+                scriptId: SS_Constants.Scripts.MapReduceTask.scriptId,
+                params
+            });
+            log.debug({ title: `${title} taskStatus`, details: JSON.stringify(taskStatus) }); ***
+
+            taskRecord.url = SS_Url.resolveRecord({
+                recordType: SS_Constants.CustomRecords.MapReduceTask.Id,
+                recordId: taskRecord.data
+            });
+            return taskRecord;
+        }; */
+
+        /**
+         * @function getDefaultUrlValues
+         * @description Retrieves the default URL values for the Suitelet
+         * @param {Object} options - The options object for the Suitelet
+         * @param {int} options.type - The type of Suitelet
+         * @returns {Object} The default URL values for the Suitelet
+         *
+         * @example
+         * getDefaultUrlValues({ type: 101 });
+         */
+        const getDefaultUrlValues = (options) => {
+            const TITLE = `${MODULE}.GetDefaultUrlValues`;
+            const SCRIPT = SS_Constants.Scripts.DataTableSuitelet;
+            log.debug({ title: `${TITLE} SCRIPT`, details: JSON.stringify(SCRIPT) });
+            let deploymentId = null;
+
+            log.audit('SCRIPT 1', JSON.stringify(SCRIPT));
+            log.audit('option 1', JSON.stringify(options));
+            switch (options.type) {
+                case TYPES.DUNNING_STATEMENTS: {
+                    deploymentId = SCRIPT.DUNNING_STATEMENTS.deploymentId;
+                    break;
+                }
+                case TYPES.DUNNING_LETTERS: {
+                    deploymentId = SCRIPT.DUNNING_LETTERS.deploymentId; //TODO: Change this to the correct deployment ID.
+                    break;
+                }
+                //Add letter case for  Suitelet types here.
+            }
+
+
+            log.audit('SCRIPT 2', JSON.stringify(SCRIPT));
+            log.audit('option 2', JSON.stringify(options));
+            return {
+                Backend: SS_Url.resolveScript({
+                    scriptId: SCRIPT.BACKEND.scriptId,
+                    deploymentId
+                }),
+                Transaction: '/app/accounting/transactions/transaction.nl?id='
+            };
+        };
+
+        /**
+         * @function getRenderedForm
+         * @description Retrieves the rendered form for the Suitelet
+         * @param {Object} options - The options object for the Suitelet
+         * @param {Object} options.renderOptions - The render options for the Suitelet
+         * @param {string} options.type - The type of Suitelet
+         * @returns {nlobjForm} The rendered form for the Suitelet
+         *
+         */
+        const getRenderedForm = (options) => {
+            const TITLE = `${MODULE}.GetRenderedForm`;
+            let { renderOptions, type } = options;
+            let renderedForm = null;
+
+            switch (options.type) {
+                case TYPES.DUNNING_STATEMENTS: {
+                    renderedForm = SS_DunningStatements.render(renderOptions);
+                    break;
+                }
+
+                // TODO: Cases can be added here for additional Suitelet types.
+
+                case TYPES.DUNNING_LETTERS: {
+                    renderedForm = SS_DunningStatements.render(renderOptions);
+                    break;
+                }
+
+            }
+
+            log.audit('option type 3 ', JSON.stringify(options.type));
+
+            log.audit({ title: 'rendred form 2', details: `renderedForm = ${renderedForm}` });
+            return renderedForm;
+        };
+
+        /**
+         * @function readScriptParameters
+         * @description Reads the script parameters for the Suitelet
+         * @returns {Object} The script parameters for the Suitelet
+         * @throws {error.SuiteScriptError} MISSING_REQD_ARGUMENT if a required parameter is missing
+         */
+        const readScriptParameters = () => {
+            const TITLE = `${MODULE}.ReadScriptParameters`;
+            const PARAMS = SS_Constants.ScriptParameters.DataTableSuitelet;
+
+            let scriptParams = {
+                type: SS_Script.getParameter({ name: PARAMS.Type })
+            };
+            log.audit('PARAMS', JSON.stringify(scriptParams));
+            if (!scriptParams.type) {
+                log.error({ title: TITLE, details: `Missing required value: Type.` });
+                return null;
+            }
+
+            return scriptParams;
+        };
+
+        /**
+         * @function render
+         * @description Renders the Suitelet
+         * @param {Object} options - The options object for the Suitelet
+         * @param {Object} options.request - The request object for the Suitelet
+         * @param {Object} options.response - The response object for the Suitelet
+         * @returns {nlobjForm} The rendered form for the Suitelet
+         *
+         * @example
+         * render({
+         *    request: request,
+         *    response: response
+         *    });
+         */
+        const render = (options) => {
+            const TITLE = `${MODULE}.Render`;
+
+            const scriptParams = readScriptParameters();  //object with type  script param {type : 101 }
+            if (!scriptParams) { return; }
+            log.debug({ title: `${TITLE} scriptParams`, details: JSON.stringify(scriptParams) });
+
+            let { request, response } = options;
+
+            log.audit('request : ', JSON.stringify(request));
+            log.audit('response : ', JSON.stringify(response));
+
+            let renderOptions = {
+                request,
+                response,
+                defaultValues: {
+                    custpage_url_values: JSON.stringify(getDefaultUrlValues({ type: scriptParams.type })) , //101
+                    custpage_dunning_type: scriptParams.type
+                    /* custpage_table_css: `&lt;style>body {
+                        transition: background-color 2s cubic-bezier(1, 1, 1, 1);
+                        transition-delay: 0s;
+                    }&lt;/style>` */
+                }
+            };
+
+            log.audit('scriptPrama default url value ', JSON.stringify(getDefaultUrlValues({ type: scriptParams.type })))
+
+            log.audit('renderOptions', JSON.stringify(renderOptions));
+            log.audit('type', scriptParams.type);
+
+            let renderedForm = getRenderedForm({
+                type: scriptParams.type,
+                renderOptions
+            });
+            log.audit('renderedForm', JSON.stringify(renderedForm));
+            if (!renderedForm) {
+                log.error({ title: TITLE, details: `Unable to render form. Please see Execution Logs for details.` });
+                return;
+            }
+
+
+            writeDataTable({
+                form: renderedForm,
+                template: SS_Constants.Templates.DataTableSuitelet
+            });
+            response.writePage({ pageObject: renderedForm });
+            log.debug({ title: TITLE, details: `Successfully built Suitelet form.` });
+
+        };
+
+        /**
+         * @function writeDataTable
+         * @description Writes the data table to the Suitelet form
+         * @param {Object} options - The options object for the data table
+         * @param {nlobjForm} options.form - The form object for the Suitelet
+         * @param {string} options.template - The template for the data table
+         * @retyurns {void}
+         */
+        const writeDataTable = (options) => {
+            let title = `${MODULE}.WriteDataTable`;
+            let { form, template } = options;
+            let tableContents = SS_File.read({ name: template });
+            log.debug({ title: title, details: tableContents });
+
+            let tableField = SS_UI.getField({ id: 'custpage_table', parent: form });
+            tableField.defaultValue = tableContents;
+        };
+
+        return {
+            render
+        };
+    }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

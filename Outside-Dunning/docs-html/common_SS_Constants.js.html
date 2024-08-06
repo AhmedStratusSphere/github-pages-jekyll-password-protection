@@ -1,0 +1,920 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> common/SS_Constants.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>common/SS_Constants.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview The module wraps all constants used within the dunning logic
+ * related to transactions, custom records, forms, and other configurations.
+ *
+ *
+ * @NApiVersion     2.1
+ * @NModuleScope    SameAccount
+ * @module         SS_Constants
+ *
+ * @requires       SS_Transaction
+ *
+ *
+ * @return  {object} CustomLists
+ * @return  {object} CustomRecords
+ * @return  {object} Entity
+ * @return  {object} Forms
+ * @return  {object} NS5_Categories
+ * @return  {object} RequestParameters
+ * @return  {object} ScriptParameters
+ * @return  {object} Scripts
+ * @return  {object} Templates - Datatable Templates for the Suitelet {DataTable_Template.html}
+ *
+ *
+ */
+
+define(
+    [
+        './SS_Transaction'
+    ],
+    (
+        SS_Transaction
+    ) => {
+
+        /**
+         * @name ENTITY
+         * @type {object}
+         * @let
+         * @description  Declare Entity Object and assign Custom Fields to it
+         *
+         * @property {object} CustomFields - Custom Fields for the Entity
+         *
+         * @example let ENTITY = {};
+         * ENTITY.CustomFields = {
+         *     CAS: 'custentity_cas'
+         * }
+         */
+        let ENTITY = {};
+        ENTITY.CustomFields = {
+            CAS:                                'custentity_cas'
+        };
+
+        /**
+         * @name TRANSACTION
+         * @type {object}
+         * @description Declare Transaction Object and assign custom modules {./common/SS_Transaction},Also define prorety  CustomTypes , CustomFields, and CustomSublistFields
+         *
+         * @property {object} CustomTypes - Custom Types for the Transaction
+         * @property {object} CustomFields - Custom Fields for the Transaction
+         * @property {object} CustomSublistFields - Custom Sublist Fields for the Transaction
+         *
+         * @example let TRANSACTION = SS_Transaction;
+         *         TRANSACTION.CustomTypes = {};
+         *         TRANSACTION.CustomFields = {
+         *             LAST_COMMUNICATION_DATE:            'custbody_ss_last_statement_comm_date'
+         *         };
+         *         TRANSACTION.CustomSublistFields = {};
+         * }
+         */
+        let TRANSACTION = SS_Transaction;
+        TRANSACTION.CustomTypes = {};
+        TRANSACTION.CustomFields = {
+            LAST_COMMUNICATION_DATE:            'custbody_ss_last_statement_comm_date'
+        };
+        TRANSACTION.CustomSublistFields = {};
+
+
+        /**
+         * @name CUSTOM_LISTS
+         * @type {object}
+         * @description Constant that organizes and stores various custom list values and their associated id used in a Dunning project.
+         *
+         * @property {object} BankingMethod - Banking Method Custom List
+         * @property {object} DataTableSuiteletTypes - DataTable Suitelet Types
+         * @property {object} DataTableTaskStatus - DataTable Task Status
+         * @property {object} DunningLevels - Dunning Levels
+         * @property {string} TaxClassification - Tax Classification Custom List
+         * @property {string} TypeOfAccount - Type of Account Custom List
+         *
+         *
+         *
+         * @example    const CUSTOM_LISTS = {
+         *             BankingMethod: 'customlist_vr_bankdetailmethod',
+         *             DataTableSuiteletTypes: {
+         *                 DUNNING_STATEMENTS: '1',
+         *                 DUNNING_LETTERS: '101',
+         *             },
+         *             DataTableTaskStatus: {
+         *                 PENDING: '1',
+         *                 IN_PROGRESS: '2',
+         *                 COMPLETED: '3',
+         *                 ...
+         *             },
+         *             DunningLevels: {
+         *                 Id: 'customlist_ss_dunning_levels',
+         *                 Values: [
+         *                     { id: '1', from: 0, to: 0 },
+         *                     { id: '2', from: 1, to: 30 },
+         *                     ...
+         *                 ]
+         *             },
+         *             TaxClassification: 'customlist_vr_taxclassificationlist',
+         *             TypeOfAccount: 'customlist_vr_typeofaccount'
+         *         };
+         */
+        const CUSTOM_LISTS = {
+            BankingMethod: 'customlist_vr_bankdetailmethod',
+            DataTableSuiteletTypes: {
+                DUNNING_STATEMENTS: '1',
+                DUNNING_LETTERS: '101',
+            },
+            DataTableTaskStatus: {
+                PENDING: '1',
+                IN_PROGRESS: '2',
+                COMPLETED: '3',
+                COMPLETED_WITH_ERRORS: '4',
+                FAILED: '5'
+            },
+            DunningLevels: {
+                Id: 'customlist_ss_dunning_levels',
+                Values: [
+                    { id: '1', from: 0, to: 0 },
+                    { id: '2', from: 1, to: 30 },
+                    { id: '3', from: 31, to: 60 },
+                    { id: '4', from: 61, to: 90 },
+                    { id: '5', from: 90, to: 0 }
+                ]
+            },
+            TaxClassification: 'customlist_vr_taxclassificationlist',
+            TypeOfAccount: 'customlist_vr_typeofaccount'
+        };
+
+        /**
+         * @name CUSTOM_RECORDS
+         * @type {object}
+         * @description Constant that organizes and stores various custom record values and their associated id used in a Dunning project.
+         *
+         * @property {object} DataTableTask - DataTable Task Custom Record
+         * @property {object} VendorRequest - Vendor Request Custom Record
+         *
+         * @example const CUSTOM_RECORDS = {
+         *            DataTableTask: {
+         *            Id: 'customrecord_ss_dt_task',
+         *            Fields: {
+         *            DATA                        : 'custrecord_ss_dt_task_data',
+         *            ERRORS                      : 'custrecord_ss_dt_task_errors',
+         *            EXPECTED                    : 'custrecord_ss_dt_task_expected',
+         *            GENERATED                   : 'custrecord_ss_dt_task_generated',
+         *            STATUS                      : 'custrecord_ss_dt_task_status',
+         *            ...
+         *            VendorRequest: {
+         *            Id: 'customrecord_vendor_request',
+         *            Fields: {
+         *            ACCOUNT_HOLDER_FULL_NAME    : 'custrecord_vr_fullnameaccountholder',
+         *            ACCOUNT_NUMBER              : 'custrecord_vr_accountnumber',
+         *            ACCOUNT_NUMBER_CBU          : 'custrecord_vr_cbuaccountnumber',
+         *            ...
+         *
+         */
+        const CUSTOM_RECORDS = {
+            DataTableTask: {
+                Id: 'customrecord_ss_dt_task',
+                Fields: {
+                    DATA                        : 'custrecord_ss_dt_task_data',
+                    ERRORS                      : 'custrecord_ss_dt_task_errors',
+                    EXPECTED                    : 'custrecord_ss_dt_task_expected',
+                    GENERATED                   : 'custrecord_ss_dt_task_generated',
+                    STATUS                      : 'custrecord_ss_dt_task_status',
+                    TYPE                        : 'custrecord_ss_dt_task_type'
+                }
+            },
+            VendorRequest: {
+                Id: 'customrecord_vendor_request',
+                Fields: {
+                    // _1099_ELIGIBLE              : 'custrecord_vr_1099',
+                    // ACH                         : 'custrecord_ach',
+                    ACCOUNT_HOLDER_FULL_NAME    : 'custrecord_vr_fullnameaccountholder',
+                    ACCOUNT_NUMBER              : 'custrecord_vr_accountnumber',
+                    ACCOUNT_NUMBER_CBU          : 'custrecord_vr_cbuaccountnumber',
+                    ACCOUNT_TYPE                : 'custrecord_vr_accountype',
+                    ACCOUNT_TYPE_SPANISH        : 'custrecord_vr_accounttypespanish',
+                    ADDRESS                     : 'custrecord1524',
+                    ADDRESSEE                   : 'custrecord_vr_addressee',
+                    ADDRESS_1                   : 'custrecord_vr_addr1',
+                    ADDRESS_2                   : 'custrecord_vr_addr2',
+                    AFFIRMATIVE_ACTION_ACK      : 'custrecord_vr_affirmaction',
+                    ANTI_BRIBERY_POLICY         : 'custrecord_vr_antibribcorrup',
+                    ANTI_HUMAN_TRAF_POLICY      : 'custrecord_vr_antihtp',
+                    ANTICIPATED_ANNUAL_SPEND    : 'custrecord_vr_anticipatedspend',
+                    // APPROVAL_DATE_AP_CLERK      : 'custrecord_vr_apclerkapprovaldate',
+                    // APPROVAL_DATE_CONTROLLER    : 'custrecord_vr_controllerapprovaldate',
+                    // APPROVAL_DATE_SUPERVISOR    : 'custrecord_vr_date_approved',
+                    // APPROVED_BY_AP_CLERK        : 'custrecord_vr_apclerkapproval',
+                    // APPROVED_BY_CONTROLLER      : 'custrecord_vr_controllerapprover',
+                    // APPROVED_BY_SUPERVISOR      : 'custrecord_vr_approved_by',
+                    BANK_COUNTRY                : 'custrecord_vr_bankcountry',
+                    BANK_CURRENCY               : 'custrecord_vr_bankaccountcurrency',
+                    BANK_DETAIL_METHOD          : 'custrecord_vr_bankdetailmethod',
+                    BANK_ROUTING_NUMBER         : 'custrecord_vr_bankroutingnumber',
+                    BANK_SORT_CODE              : 'custrecord_vr_intl_banksortcode',
+                    BANK_CITY                   : 'custrecord_vr_intl_bankcity',
+                    BANK_STATE                  : 'custrecord_vr_intl_stateprovince',
+                    BANK_STREET                 : 'custrecord_vr_intl_bankstreetaddress',
+                    BANK_ZIP                    : 'custrecord_vr_intl_postalcode',
+                    BRANCH_TRANSIT_NUMBER       : 'custrecord_vr_intl_branchtransnum',
+                    BSB_CODE                    : 'custrecord_vr_intl_bsbcode',
+                    CATEGORY                    : 'custrecord_vr_category',
+                    CERTIFICATE_OF_INSURANCE    : 'custrecord_vr_certofinsurance',
+                    CITY                        : 'custrecord_vr_city',
+                    CLABE                       : 'custrecord_vr_clabe',
+                    COMPANY_NAME                : 'custrecord_vr_companyname',
+                    COUNTRY                     : 'custrecord_vr_country',
+                    CURRENCY                    : 'custrecord_vr_currency',
+                    CURP                        : 'custrecord_vr_curp',
+                    DATA_BREACH_REPORT          : 'custrecord_vr_databreachreports',
+                    DBA                         : 'custrecord_vr_dba',
+                    DIFFERENT_NAME              : 'custrecord_vr_differentname',
+                    // EMAIL_SENT_AP_CLERK         : 'custrecord_finalize_tc',
+                    // EMAIL_SENT_CONTROLLER       : 'custrecord_vr_assign_terms',
+                    // EMAIL_SENT_OFC_ASST         : 'custrecord_obtain_w9',
+                    // EMAIL_SENT_SUPERVISOR       : 'custrecord_vr_confirm_address',
+                    // EMAIL_SENT_VENDOR_REQUEST   : 'custrecord_vr_confirm',
+                    FAX                         : 'custrecord_vr_fax',
+                    FIRST_NAME                  : 'custrecord_vr_indivfirstname',
+                    FINANCIAL_INSTITUTION       : 'custrecord_vr_intl_fininstnum',
+                    FPS_ID                      : 'custrecord_vr_hkdfpdid',
+                    FPS_ID_IS_YES               : 'custrecord_vr_fpsidisyes',
+                    GHG_EMISSION_AMOUNTS        : 'custrecord_vr_ghgemissionamount',
+                    GHG_EMISSIONS_AUDITED       : 'custrecord_vr_ghgaudit',
+                    GHG_EMISSIONS_CALC          : 'custrecord_vr_ghgemission',
+                    HAS_SUSTAINABILITY_REPORT   : 'custrecord_vr_sustreport',
+                    IBAN                        : 'custrecord_vr_intl_iban',
+                    IS_BIZ_SMALL                : 'custrecord_vr_smallbiz',
+                    IS_BIZ_SMALL_HUBZONE        : 'custrecord_vr_hubzone',
+                    IS_BIZ_SMALL_MINORITY       : 'custrecord_vr_minorityosb',
+                    IS_BIZ_SMALL_VET_DISABLED   : 'custrecord_vr_sdvosmallbiz',
+                    IS_BIZ_VETERAN_OWNED        : 'custrecord_vr_vetownedbiz',
+                    IS_BIZ_WOMEN_OWNED          : 'custrecord_vr_womenownedbiz',
+                    LAST_NAME                   : 'custrecord_vr_indivlastname',
+                    LEGAL_DISCLAIMER            : 'custrecord_vr_legaldisclaimercheckbox',
+                    // LINK_TO_VENDOR              : 'custrecord_vr_link_vendor',
+                    MAIN_ACCT_CONTACT           : 'custrecord_vr_mainacctcontact',
+                    MAIN_ACCT_CONTACT_EMAIL     : 'custrecord_vr_mainacctcontactemail',
+                    MISC_BANKING_DETAILS        : 'custrecord_vr_intl_bankingdetails',
+                    NAICS_CODE                  : 'custrecord_vr_naicscode',
+                    NOTES                       : 'custrecord_vr_notes',
+                    NUMBER_OF_EMPLOYEES         : 'custrecord_vr_numemployee',
+                    OFAC_CHECK                  : 'custrecord_vr_ofaccheck',
+                    OUTSIDE_REP_CONTACT         : 'outside_rep_contact',
+                    PARENT_VENDOR               : 'custrecord_vr_parentvendor',
+                    PAYMENT_TERMS               : 'custrecord_vr_payment_terms',
+                    PAYMENT_TYPE                : 'custrecord_vr_paymenttype',
+                    PHONE                       : 'custrecord_vr_phone',
+                    PREFERRED_PAYMENT_METHOD    : 'custrecord_vr_pref_pymt_method',
+                    PURCHASING_CONTACT          : 'custrecord_vr_primary_contact',
+                    PURCHASING_CONTACT_EMAIL    : 'custrecord_vr_email',
+                    PURPOSE_OF_PAYMENT          : 'custrecord_vr_intl_purposeofpayment',
+                    RECEIVING_BANK_NAME         : 'custrecord_vr_receivingbankname',
+                    REMITTANCE_EMAIL            : 'custrecord_vr_remittanceemail',
+                    REMIT_TO_ADDR_1             : 'custrecord_vr_remaddr1',
+                    REMIT_TO_ADDR_2             : 'custrecord_vr_remaddr2',
+                    REMIT_TO_CITY               : 'custrecord_vr_remcity',
+                    REMIT_TO_COUNTRY            : 'custrecord_vr_remcountry',
+                    REMIT_TO_STATE              : 'custrecord_vr_remstate',
+                    REMIT_TO_ZIP                : 'custrecord_vr_remzip',
+                    REQUESTER_FIRST_NAME        : 'custrecord_vr_requested_by',
+                    REQUESTER_LAST_NAME         : 'custrecord_vr_requested_bylastname',
+                    REVENUE                     : 'custrecord_vr_revenue',
+                    RUT_NUMBER                  : 'custrecord_vr_rut',
+                    SAME_AS_LEGAL_ADDRESS       : 'custrecord_vr_sameaslegal',
+                    SOC_CERTIFICATE             : 'custrecord_vr_soccertificate',
+                    SSN                         : 'custrecord_vr_ssn',
+                    STATE                       : 'custrecord_vr_state',
+                    STATE_INTL                  : 'custrecord_vr_stateprovince_nonusacad',
+                    STATUS                      : 'custrecord_vr_status',
+                    SWIFT_BIC_CODE              : 'custrecord_vr_bicswift',
+                    T_C                         : 'custrecord_signed_tc',
+                    TAX_CLASSIFICATION          : 'custrecord_vr_taxclassification',
+                    TAX_ID_CUIL_CUIT            : 'custrecord_vr_cuilcuit',
+                    TAX_ID_NON_US               : 'custrecord_vr_foreigntax_id',
+                    TAX_ID_US                   : 'custrecord_vr_tax_id',
+                    TYPICAL_PRODUCTS_SERVICES   : 'custrecord_vr_typicalprodserv',
+                    TYPE_OF_ACCOUNT             : 'custrecord_vendor_request_eft_bill_pay',
+                    VENDOR_COMMENTS             : 'custrecord_vr_addtlveninfo',
+                    W9                          : 'custrecord_vr_w9',
+                    ZIP_CODE                    : 'custrecord_vr_zip'
+                }
+            }
+        };
+
+
+        /**
+         * @name FORMS
+         * @type {object}
+         *
+         * @description Constant that organizes and stores various form values and their associated id used in a Dunning project.
+         *
+         * @property {object} DUNNING_STATEMENTS - Dunning Statements Form
+         * @property {object} DUNNING_LETTERS - Dunning Letters Form
+         *
+         * @example const FORMS = {
+         *    DUNNING_STATEMENTS: {
+         *            Title: 'Send Customer Statements',
+         *            Buttons: [
+         *            {
+         *            id: 'custpage_btn_apply_filters',
+         *            label: 'Apply Filters',
+         *            functionName: 'applyFilters'
+         *            },
+         *            {
+         *            label: 'Send Statements',
+         *            submit: true
+         *            }
+         *            ],
+         *            ClientScriptFile: 'SS_CS_DunningStatements.js',
+         *            FieldGroups: [
+         *            {
+         *            id: 'custpage_filters',
+         *            ...
+         *            },
+         *   DUNNING_LETTERS: {
+         *                 Title: 'Dunning Letters',
+         *                 Buttons: [
+         *                     {
+         *                         id: 'custpage_btn_apply_filters',
+         *                         label: 'Apply Filters',
+         *                         functionName: 'applyFilters'
+         *                     },
+         *                     {
+         *                         id: 'custpage_btn_level1',
+         *                         label: 'Send Level 1',
+         *                         functionName: 'triggerbtn_II'
+         *                     },
+         *                     {...
+         * */
+        const FORMS = {
+            DUNNING_STATEMENTS: {
+                Title: 'Send Customer Statements',
+                Buttons: [
+                    {
+                        id: 'custpage_btn_apply_filters',
+                        label: 'Apply Filters',
+                        functionName: 'applyFilters'
+                    },
+                    {
+                        label: 'Send Statements',
+                        submit: true
+                    }
+                ],
+                ClientScriptFile: 'SS_CS_DunningStatements.js',
+                FieldGroups: [
+                    {
+                        id: 'custpage_filters',
+                        label: 'Search Criteria'
+                    },
+                    {
+                        id: 'custpage_table_container',
+                        label: 'Customer Overdue Balance'
+                    }
+                ],
+                Fields: [
+                    {
+                        id: 'custpage_subsidiary',
+                        label: 'Subsidiary',
+                        type: 'select',
+                        source: 'subsidiary',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_levels',
+                        label: 'Levels',
+                        type: 'select',
+                        source: 'customlist_ss_dunning_levels',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_customer',
+                        label: 'Customer',
+                        type: 'select',
+                        source: 'customer',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_condition',
+                        label: 'Condition',
+                        type: 'select',
+                        filter: true,
+                        container: 'custpage_filters',
+                        items: [
+                            { text: '', value: '' },
+                            { text: 'Equal To or Greater Than', value: 'equalGreat' },
+                            { text: 'Equal To or Less Than', value: 'equalLess' },
+                            { text: 'Equal To', value: 'equal' }
+                        ]
+                    },
+                    {
+                        id: 'custpage_cas',
+                        label: 'CAS',
+                        type: 'select',
+                        source: 'employee',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_open_balance',
+                        label: 'Open Balance (USD)',
+                        type: 'currency',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_lastcomm',
+                        label: 'Last Communication',
+                        type: 'date',
+                        source: 'customlist_ss_last_comm',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_url_values',
+                        label: 'URL Values',
+                        type: 'longtext',
+                        display: 'hidden',
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_custom_js',
+                        label: 'JS',
+                        type: 'inlinehtml',
+                        container: 'custpage_filters'
+                    },
+                    /* {
+                        id: 'custpage_table_css',
+                        label: 'CSS',
+                        type: 'inlinehtml',
+                        container: 'custpage_filters'
+                    }, */
+                    {
+                        id: 'custpage_table',
+                        label: 'Table',
+                        type: 'inlinehtml',
+                        layout: 'outsidebelow',
+                        container: 'custpage_table_container'
+                    },
+                    {
+                        id: 'custpage_dunning_type',
+                        label: 'Dunning Type',
+                        type: 'longtext',
+                        display: 'hidden',
+                        container: 'custpage_filters'
+                    },
+
+                ]
+            },
+            DUNNING_LETTERS: {
+                Title: 'Dunning Letters',
+                Buttons: [
+                    {
+                        id: 'custpage_btn_apply_filters',
+                        label: 'Apply Filters',
+                        functionName: 'applyFilters'
+                    },
+                    {
+                        id: 'custpage_btn_level1',
+                        label: 'Send Level 1',
+                        functionName: 'triggerbtn_II'
+                    },
+                    {
+                        id: 'custpage_btn_level2',
+                        label: 'Send Level 2',
+                        functionName: 'triggerbtn_III'
+                    },
+                    {
+                        id: 'custpage_btn_level3',
+                        label: 'Send Level 3',
+                        functionName: 'triggerbtn_IV'
+                    },
+                    {
+                        id: 'custpage_btn_level4',
+                        label: 'Send Level 4',
+                        functionName: 'triggerbtn_V'
+                    },
+                    {
+                        label: 'Submit',
+                        submit: true
+                    }
+                ],
+                ClientScriptFile: 'SS_CS_DunningLetters.js', // TODO: Create a new client script for Dunning Letters
+                FieldGroups: [
+                    {
+                        id: 'custpage_filters',
+                        label: 'Search Criteria'
+                    },
+                    {
+                        id: 'custpage_table_container',
+                        label: 'Customer Overdue Balance'
+                    }
+                ],
+                Fields: [
+                    {
+                        id: 'custpage_subsidiary',
+                        label: 'Subsidiary',
+                        type: 'select',
+                        source: 'subsidiary',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_levels',
+                        label: 'Levels',
+                        type: 'select',
+                        source: 'customlist_ss_dunning_levels',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    // {
+                    //     id: 'custpage_condition',
+                    //     label: 'Condition',
+                    //     type: 'select',
+                    //     filter: true,
+                    //     container: 'custpage_filters',
+                    //     items: [
+                    //         { text: '', value: '' },
+                    //         { text: 'Equal To or Greater Than', value: 'equalGreat' },
+                    //         { text: 'Equal To or Less Than', value: 'equalLess' },
+                    //         { text: 'Equal To', value: 'equal' }
+                    //     ]
+                    // },
+                    {
+                        id: 'custpage_customer',
+                        label: 'Customer',
+                        type: 'select',
+                        source: 'customer',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_cas',
+                        label: 'CAS',
+                        type: 'select',
+                        source: 'employee',
+                        filter: true,
+                        container: 'custpage_filters'
+                    },
+                    // {
+                    //     id: 'custpage_open_balance',
+                    //     label: 'Open Balance (USD)',
+                    //     type: 'currency',
+                    //     filter: true,
+                    //     container: 'custpage_filters'
+                    // },
+                    // {
+                    //     id: 'custpage_lastcomm',
+                    //     label: 'Last Communication',
+                    //     type: 'date',
+                    //     source: 'customlist_ss_last_comm',
+                    //     filter: true,
+                    //     container: 'custpage_filters'
+                    // },
+                    {
+                        id: 'custpage_url_values',
+                        label: 'URL Values',
+                        type: 'longtext',
+                        display: 'hidden',
+                        container: 'custpage_filters'
+                    },
+                    {
+                        id: 'custpage_custom_js',
+                        label: 'JS',
+                        type: 'inlinehtml',
+                        container: 'custpage_filters'
+                    },
+                    /* {
+                        id: 'custpage_table_css',
+                        label: 'CSS',
+                        type: 'inlinehtml',
+                        container: 'custpage_filters'
+                    }, */
+                    {
+                        id: 'custpage_table',
+                        label: 'Table',
+                        type: 'inlinehtml',
+                        layout: 'outsidebelow',
+                        container: 'custpage_table_container'
+                    },
+                    {
+                        id: 'custpage_dunning_type',
+                        label: 'Dunning Type',
+                        type: 'longtext',
+                        display: 'hidden',
+                        container: 'custpage_filters'
+                    },
+
+                ],
+                Levels: {
+                    level_1: '1',
+                    level_2: '2',
+                    level_3: '3',
+                    level_4: '4'
+                }
+
+            }
+        };
+
+
+        /**
+         * @name NS5_CATEGORIES
+         * @type {object}
+         *
+         * @description Constant that organizes and stores various NS5 categories.
+         *
+         * @property {string} ON_BOARD - On Board
+         * @property {string} OFF_SITE - Off Site
+         * @property {string} SUPPLIER - Supplier
+         *
+         * @example const NS5_CATEGORIES = {
+         *            ON_BOARD:                           '1',
+         *            OFF_SITE:                           '2',
+         *            SUPPLIER:                           '3'
+         *            }
+         */
+
+        const NS5_CATEGORIES = {
+            ON_BOARD:                           '1',
+            OFF_SITE:                           '2',
+            SUPPLIER:                           '3'
+        };
+
+        /**
+         * @name REQUEST_PARAMETERS
+         * @type {object}
+         * @description Constant that organizes and stores various request parameters used in a Dunning project.
+         * @property {string[]} DATATABLE_BACKEND - DataTable Backend Request Parameters
+         * @property {string[]} DUNNING_LETTERS - Dunning Letters Request Parameters
+         * @property {string[]} DUNNING_STATEMENTS - Dunning Statements Request Parameters
+         * @example
+         * const REQUEST_PARAMETERS = {
+         *    DATATABLE_BACKEND: [
+         *    'action',
+         *    'sltype'
+         *    ],
+         *    DUNNING_STATEMENTS: [
+         *    'dosearch',
+         *    'subsidiary',
+         *    ...
+         */
+
+        const REQUEST_PARAMETERS = {
+            DATATABLE_BACKEND: [
+                'action',
+                'sltype'
+            ],
+            DUNNING_STATEMENTS: [
+                'dosearch',
+                'subsidiary',
+                'levels',
+                'customer',
+                'condition',
+                'cas',
+                'openbalanceusd',
+                'lastcommunication'
+            ],
+            DUNNING_LETTERS: [
+                'dosearch',
+                'subsidiary',
+                'levels',
+                'customer',
+                'cas',
+            ]
+        };
+
+
+        /**
+         * @name SCRIPTS
+         * @type {object}
+         * @description Constant that organizes and stores various script type and their associated id used in a Dunning project.
+         * @property {object} DataTableSuitelet - DataTable Suitelet Scripts
+         * @property {object} DataTableTaskMapReduce - DataTable Task Map Reduce Scripts
+         * @property {object} DunningStatementsMapReduce - Dunning Statements Map Reduce Scripts
+         * @property {object} DunningLettersMapReduce - Dunning Letters Map Reduce Scripts
+         * @example
+         * const SCRIPTS = {
+         *   DataTableSuitelet: {
+         *    BACKEND: {
+         *    scriptId: 'customscript_ss_sl_dt_backend',
+         *    },
+         *    DUNNING_STATEMENTS: {
+         *    deploymentId: 'customdeploy_ss_sl_dt_backend_dunstm'
+         *    },
+         *    DUNNING_LETTERS: {
+         *    ...
+         */
+        const SCRIPTS = {
+            DataTableSuitelet: {
+                BACKEND: {
+                    scriptId: 'customscript_ss_sl_dt_backend',
+                },
+                DUNNING_STATEMENTS: {
+                    deploymentId: 'customdeploy_ss_sl_dt_backend_dunstm'
+                },
+                DUNNING_LETTERS: {
+                    deploymentId: 'customdeploy_ss_sl_dt_backend_dunlettrs'
+                }
+            },
+            /* DataTableTaskMapReduce: {
+                scriptId: 'customscript_ss_send_dunning_emails'
+            }, */
+            DunningStatementsMapReduce: {
+                scriptId: 'customscript_ss_mr_dun_stm'
+            },
+            DunningLettersMapReduce: {
+                scriptId: 'customscript_ss_send_dunning_emails'
+            }
+        };
+
+        /**
+         * @name SCRIPT_PARAMETERS
+         * @type {object}
+         * @description Constant that organizes and stores various script record parameters used in a Dunning project.
+         * @property {object} DunningStatementMapReduce - Dunning Statement Map Reduce Script Parameters
+         * @property {string} HtmlTemplateFile - HTML Template File
+         * @property {object} DataTableSuiteletBackend - DataTable Suitelet Backend Script Parameters
+         * @property {object} DataTableTaskMapReduce - DataTable Task Map Reduce Script Parameters
+         * @property {string} CustomerStatementTaskSearch - Customer Statement Task Search
+         * @property {string} FileUploadFolder - File Upload Folder
+         * @property {string} DataTableSuitelet - DataTable Suitelet Script Parameters
+         * @example
+         * const SCRIPT_PARAMETERS = {
+         *   DunningStatements: {
+         *   StatementSearchId: 'custscript_ss_cs_search',
+         *   TaskSearchId: 'custscript_ss_cs_tasks_search'
+         *   },
+         *   CustomerStatementTaskSearch: '',
+         *   FileUploadFolder: 'custscript_ss_sl_ven_onboard_form_folder',
+         *   HtmlTemplateFile: 'custscript_ss_sl_ven_onboard_form_html',
+         *   DataTableTaskRecord: 'custscript_ss_mr_dt_task_record',
+         *   DataTableSuitelet: {
+         *   Type: 'custscript_ss_sl_dt_type'
+         *   ...
+         */
+        const SCRIPT_PARAMETERS = {
+            /* DunningStatements: {
+                StatementSearchId       : 'custscript_ss_cs_search',
+                TaskSearchId            : 'custscript_ss_cs_tasks_search'
+            }, */
+            CustomerStatementTaskSearch : '',
+            FileUploadFolder            : 'custscript_ss_sl_ven_onboard_form_folder',
+            HtmlTemplateFile            : 'custscript_ss_sl_ven_onboard_form_html',
+            // DataTableTaskRecord         : 'custscript_ss_mr_dt_task_record',
+            DataTableSuitelet: {
+                Type                    : 'custscript_ss_sl_dt_type'
+            },
+            DataTableSuiteletBackend    : {
+                InProgressTasks         : 'custscript_ss_sl_dt_backend_inprog_tasks',
+                RowSearch               : 'custscript_ss_sl_dt_backend_row_search',
+                TaskFolder              : 'custscript_ss_sl_dt_backend_task_folder'
+            },
+            DataTableTaskMapReduce      : {
+                CustomersArray          : 'custscript_ss_customers_array',
+                TaskRecord              : 'custscript_ss_mr_dt_task_record'
+            },
+            DunningStatementMapReduce   : {
+                PDFFolder               : 'custscript_ss_mr_dun_stm_invpdf_folder',
+                SearchDunning           : 'custscript_ss_mr_dun_stm_dunning',
+                SearchDunningMessage    : 'custscript_ss_mr_dun_stm_dun_msg',
+                SearchEmailMessage      : 'custscript_ss_mr_dun_stm_email_msg',
+                SearchInvoiceGroupComp  : 'custscript_ss_mr_dun_stm_invgrp_comp',
+                SearchInvoices          : 'custscript_ss_mr_dun_stm_invoices',
+                StatementForm           : 'custscript_ss_mr_dun_stm_form',
+                TaskRecord              : 'custscript_ss_mr_dun_stm_task',
+                TemplateId              : 'custscript_ss_mr_dun_stm_invgrp_template'
+            }
+        };
+
+
+        return {
+            CustomLists         : CUSTOM_LISTS,
+            CustomRecords       : CUSTOM_RECORDS,
+            Entity              : ENTITY,
+            Forms               : FORMS,
+            NS5_Categories      : NS5_CATEGORIES,
+            RequestParameters   : REQUEST_PARAMETERS,
+            ScriptParameters    : SCRIPT_PARAMETERS,
+            Scripts             : SCRIPTS,
+            Templates           : {
+                DataTableSuitelet       : 'DataTable_Template.html'
+            },
+            Transaction         : TRANSACTION
+        };
+    }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

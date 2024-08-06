@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> DataTableSuitelets/SS_Lib_CustomerStatements.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>DataTableSuitelets/SS_Lib_CustomerStatements.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @NApiVersion         2.1
+ * @NModuleScope        SameAccount
+ *
+ *
+ * @module              SS_Lib_CustomerStatements
+ * @description         Library functions for Customer Statements
+ *
+ * @requires           SS_Constants
+ * @requires           SS_File
+ * @requires           SS_Record
+ * @requires           SS_Script
+ * @requires           SS_Search
+ * @requires           SS_String
+ * @requires           SS_UI
+ * @requires           SS_Url
+ * @requires           SS_Transaction
+ *
+ *
+ * @return {Object}      SS_Lib_CustomerStatements
+ * @return {Function}    SS_Lib_CustomerStatements.buildUI
+ * @return {Function}    SS_Lib_CustomerStatements.createStatementTask
+ * @return {Function}    SS_Lib_CustomerStatements.getRequestParameters
+ * @return {Function}    SS_Lib_CustomerStatements.getTableData
+ *
+ *
+ */
+
+define(
+    [
+        '../common/SS_Constants',
+        '../common/SS_File',
+        '../common/SS_Record',
+        '../common/SS_Script',
+        '../common/SS_Search',
+        '../common/SS_String',
+        '../common/SS_UI',
+        '../common/SS_Url',
+        '../common/SS_Transaction'
+    ],
+    (
+        SS_Constants,
+        SS_File,
+        SS_Record,
+        SS_Script,
+        SS_Search,
+        SS_String,
+        SS_UI,
+        SS_Url,
+        SS_Transaction
+    ) => {
+
+        /**
+         * @name MODULE
+         * @description Module name for logging and debugging purposes
+         * @constant
+         *
+         * @type {string}
+         */
+        const MODULE = `SS|CustomerStatements`;
+
+        /**
+         * @name FORM
+         * @description Form configuration for Customer Statements
+         * @constant
+         *
+         * @type {Object}
+         *
+         */
+        const FORM = SS_Constants.Forms.CustomerStatements;
+
+        /**
+         * @name OPERATOR
+         * @description Search operators
+         * @constant
+         *
+         * @type {Object}
+         */
+        const OPERATOR = SS_Search.Operator;
+
+        /**
+         * @name REQUEST_PARAMS
+         * @description Request parameters for Customer Statements
+         * @constant
+         *
+         * @type {Array}
+         *
+         *
+         */
+        const REQUEST_PARAMS = SS_Constants.RequestParameters.CustomerStatements;
+
+        /**
+         * @name SCRIPT_PARAMS
+         * @description Script parameters for Customer Statements
+         * @constant
+         *
+         * @type {Object}
+         *
+         *
+         */
+        const SCRIPT_PARAMS = SS_Constants.ScriptParameters.CustomerStatements;
+
+        /**
+         * @name TRANSACTION
+         * @description Transaction constants
+         * @constant
+         *
+         * @type {Object}
+         */
+        const TRANSACTION = SS_Constants.Transaction;
+
+        /**
+         * @function buildSearchFilters
+         * @description Build search filters for Customer Statements
+         *
+         * @param {Object} options
+         * @param {Number} options.balance
+         * @param {Number} options.cas
+         * @param {String} options.condition
+         * @param {Number} options.customer
+         * @param {Date} options.lastcomm
+         * @param {Number} options.level
+         * @param {Number} options.subsidiary
+         * @param {Object} options.searchObject
+         *
+         * @returns {Array} filters
+         */
+        const buildSearchFilters = (options) => {
+            const TITLE = `${MODULE}.BuildSearchFilters`;
+            let {
+                balance,
+                cas,
+                condition,
+                customer,
+                lastcomm,
+                level,
+                searchObject,
+                subsidiary
+            } = options;
+            log.debug({ title: `${TITLE} options`, details: JSON.stringify(options) });
+            let filters = [];
+
+            if (cas) {
+                filters = filters.concat([
+                    `customermain.${SS_Constants.Entity.CustomFields.CAS}`, OPERATOR.ANYOF, cas
+                ], 'AND');
+            }
+
+            if (customer) {
+                filters = filters.concat([
+                    TRANSACTION.Fields.NAME, OPERATOR.ANYOF, customer
+                ], 'AND');
+            }
+
+            if (lastcomm) {
+                filters = filters.concat([
+                    [ TRANSACTION.CustomFields.LAST_COMMUNICATION_DATE, OPERATOR.ONORBEFORE, lastcomm ],
+                    'OR',
+                    [ TRANSACTION.CustomFields.LAST_COMMUNICATION_DATE, OPERATOR.ISEMPTY, null ]
+                ], 'AND');
+            }
+
+            if (subsidiary) {
+                filters = filters.concat([
+                    TRANSACTION.Fields.SUBSIDIARY, OPERATOR.ANYOF, subsidiary
+                ], 'AND');
+            }
+
+            if (condition &amp;&amp; !!balance === true) {
+                let operator = OPERATOR.EQUALTO;
+                switch (condition.toLowerCase()) {
+                    case 'equalgreat': {
+                        operator = OPERATOR.GREATERTHANOREQUALTO;
+                        break;
+                    }
+                    case 'equalless': {
+                        operator = OPERATOR.LESSTHANOREQUALTO;
+                        break;
+                    }
+                }
+                filters = filters.concat([
+                    `sum(${TRANSACTION.Fields.AMOUNT_REMAINING})`, operator, balance
+                ], 'AND');
+            }
+
+            let dunningLevel = SS_Constants.CustomLists.DunningLevels.Values.find(d => d.id === level);
+            if (dunningLevel) {
+                filters = filters.concat([
+                    `max(${TRANSACTION.Fields.DAYS_OVERDUE})`, OPERATOR.BETWEEN, dunningLevel.from, dunningLevel.to
+                ], 'AND');
+            }
+
+            if (filters.length > 0) {
+                filters.pop();
+            }
+            log.debug({ title: `${TITLE} END`, details: JSON.stringify(filters) });
+
+            return filters;
+        };
+
+
+        /**
+         *
+         * @function buildUI
+         * @description Build the User Interface for Customer Statements
+         *
+         * @param {Object} options
+         * @param {Object} options.request
+         *
+         * @returns {Object} { status, object }
+         */
+        const buildUI = (options) => {
+            let title = `${MODULE}.BuildUI`;
+            let { request } = options;
+            let requestParameters = getRequestParameters({ request });
+            log.debug({ title: `${title} requestParameters`, details: JSON.stringify(requestParameters) });
+
+            let defaultValues = mapParametersToFields({ parameters: requestParameters });
+            defaultValues.custpage_url_values = JSON.stringify(getUrlValues());
+
+            let form = SS_UI.buildForm({
+                config: FORM,
+                defaultValues: defaultValues
+            });
+
+            /* let dataTableFileName = SS_Script.getParameter({ name: SCRIPT_PARAMS.HtmlTemplateFile });
+            if (!dataTableFileName) {
+                let error = ERROR_MISSINGPARAM({ type: ERROR_TYPES.MISSING_DATATABLE_HTML });
+                log.error({ title: title, details: error });
+                return { status: 0, error: error };
+            }
+            log.debug({ title: title, details: `dataTableFileName = ${dataTableFileName}` }); */
+
+            /* let data = getTableData({ parameters: requestParameters });
+            log.debug({ title: title, details: JSON.stringify(data) });
+
+            if (data) {
+                writeDataTable({ data, form, template: dataTableFileName });
+            } */
+            writeDataTable({ form, template: SS_Constants.Templates.DataTable });
+
+            return { status: 1, object: form };
+        };
+
+        /**
+         * @function createStatementTask
+         * @description Create a Map/Reduce task for generating Customer Statements
+         *
+         * @param {Object} options
+         * @param {Object} options.parameters
+         *
+         * @returns {Object} { status, data }
+         *
+         * @example createStatementTask({ parameters });
+         */
+        const createStatementTask = (options) => {
+            let title = `${MODULE}.CreateStatementTask`;
+            let { parameters } = options;
+            log.debug({ title: `${title} parameters`, details: JSON.stringify(parameters) });
+
+            let taskRecord = createStatementTaskRecord(options);
+            if (!taskRecord.status) {
+                return taskRecord;
+            }
+
+            log.debug({ title: TITLE, details: `taskRecord = ${taskRecord.data}` });
+
+            /* let params = {};
+            params[SS_Constants.ScriptParameters.MapReduceTaskRecord] = taskRecord.data;
+
+            let taskStatus = SS_Task.createMapReduceTask({
+                scriptId: SS_Constants.Scripts.MapReduceTask.scriptId,
+                params
+            });
+            log.debug({ title: `${title} taskStatus`, details: JSON.stringify(taskStatus) }); */
+
+            taskRecord.url = SS_Url.resolveRecord({
+                recordType: SS_Constants.CustomRecords.MapReduceTask.Id,
+                recordId: taskRecord.data
+            });
+            return taskRecord;
+        };
+
+
+        /**
+         * @function createStatementTaskRecord
+         *
+         * @description Create a Map/Reduce task record for generating Customer Statements
+         *
+         * @param {Object} options
+         * @param {Object} options.parameters
+         *
+         * @returns {Object} { status, data }
+         *
+         * @example createStatementTaskRecord({ parameters });
+         */
+        const createStatementTaskRecord = (options) => {
+            let title = `${MODULE}.CreateStatementTaskRecord`;
+            let { parameters } = options;
+            let TASK = SS_Constants.CustomRecords.MapReduceTask
+            let FIELDS = TASK.Fields;
+
+            try {
+                let mrTask = SS_Record.create({ type: TASK.Id });
+                mrTask.setValue({ fieldId: FIELDS.DATA, value: parameters });
+                mrTask.setValue({ fieldId: FIELDS.STATUS, value: SS_Constants.CustomLists.MapReduceTaskStatus.PENDING });
+                mrTask.setValue({ fieldId: FIELDS.TYPE, value: SS_Constants.CustomLists.MapReduceType.CUSTOMER_STATEMENT });
+
+                let mrTaskId = mrTask.save();
+                log.debug({ title, details: `Successfully created Task ID ${mrTaskId}.` });
+                return { status: true, data: mrTaskId };
+            }
+            catch (ex) {
+                let errorMessage = ex.message || ex.toString();
+                log.error({ title, details: errorMessage });
+                return { status: false, error: errorMessage };
+            }
+        };
+
+
+        /**
+         * @function getRequestParameters
+         * @description Get the request parameters for Customer Statements
+         * @param options
+         * @param {Object} options.request
+         * @param {Object} options.request.parameters
+         * @param {String} options.request.parameters.action
+         * @param {String} options.request.parameters.balance
+         * @param {String} options.request.parameters.cas
+         * @param {String} options.request.parameters.condition
+         * @param {String} options.request.parameters.customer
+         * @param {String} options.request.parameters.lastcomm
+         * @param {String} options.request.parameters.level
+         * @param {String} options.request.parameters.subsidiary
+         * @returns {Object} output
+         *
+         * @example getRequestParameters({ request });
+         */
+        const getRequestParameters = (options) => {
+            let title = `${MODULE}.GetRequestParameters`;
+            let output = {};
+            let { request } = options;
+            let params = request.parameters;
+
+            output.action = params.action;
+            for (let i = 0, count = REQUEST_PARAMS.length; i &lt; count; i++) {
+                let key = REQUEST_PARAMS[i];
+                output[key] = params[key];
+            }
+
+            log.debug({ title: title, details: JSON.stringify(output) });
+            return output;
+        };
+
+
+        /**
+         * @function getTableData
+         * @description Get the data for the Customer Statements table
+         * @param options
+         * @param {Object} options.parameters
+         * @param {String} options.parameters.balance
+         * @param {String} options.parameters.cas
+         * @param {String} options.parameters.condition
+         * @param {String} options.parameters.customer
+         * @param {String} options.parameters.lastcomm
+         * @param {String} options.parameters.level
+         * @param {String} options.parameters.subsidiary
+         * @returns {Object} { columns, rows }
+         */
+        const getTableData = (options) => {
+            let title = `${MODULE}.GetTableData`;
+            let { parameters } = options;
+
+            let taskSearch = loadSearch({ searchId: SCRIPT_PARAMS.TaskSearchId });
+            if (!taskSearch) {
+                log.error({ title, details: `Unable to load Customer Statement Task saved search.` });
+                return;
+            }
+
+            let inProgress = [];
+            let tasks = taskSearch.getResults();
+            for (let i = 0, count = tasks.length; i &lt; count; i++) {
+                log.debug({ title: `${title} i=${i} task`, details: JSON.stringify(tasks[i]) });
+                let contents = tasks[i].invoicingdata;
+                let jsonContents = JSON.parse(contents);
+                inProgress = jsonContents.idList.reduce((total, next) => {
+                    total = total.concat(next.list);
+                    return total;
+                }, []);
+            }
+            inProgress = [ ...new Set(inProgress) ];
+            log.debug({ title: `${title} inProgress = ${inProgress.length}`, details: JSON.stringify(inProgress) });
+            parameters.tasks = inProgress;
+
+            let statementSearch = loadSearch({ searchId: SCRIPT_PARAMS.StatementSearchId });
+            if (!statementSearch) {
+                log.error({ title, details: `Unable to load Customer Statement saved search.` });
+                return null;
+            }
+
+            log.debug({ title: `${title} parameters`, details: JSON.stringify(parameters) });
+            log.debug({ title: `${title} statementSearch.Expression`, details: JSON.stringify(statementSearch.Expression) });
+            statementSearch.Expression = [
+                ...statementSearch.Expression,
+                ...buildSearchFilters({ parameters })
+            ];
+            log.debug({ title: `${title} filterExpression`, details: JSON.stringify(statementSearch.Expression) });
+
+            let data = { columns: [], rows: [] };
+            let statementColumns = statementSearch.Columns;
+            for (let i = 0, count = statementColumns.length; i &lt; count; i++) {
+                let label = statementColumns[i].label;
+                let labelId = SS_String.normalize(statementColumns[i].label);
+                log.audit({ title: `${title} labelId`, details: labelId });
+                if (labelId.indexOf('_text') > 0) {
+                    log.audit({ title: `${title} labelId BEFORE TEXT`, details: `labelId BEFORE TRIM = ${labelId}` });
+                    labelId = label.substring(0, labelId.indexOf('_text'));
+                    log.audit({ title: `${title} labelId AFTER TEXT`, details: `labelId AFTER TRIM = ${labelId}` });
+                }
+                data.columns.push({
+                    data: labelId,
+                    title: label
+                });
+            }
+            log.debug({ title: `${title} data.columns`, details: JSON.stringify(data.columns) });
+
+            data.rows = statementSearch.getResults();
+            return data;
+        };
+
+
+        /**
+         * @function getUrlValues
+         * @description Get the URL values for Customer Statements
+         * @returns {{Backend, Transaction: string}}
+         * @example getUrlValues();
+         *
+         */
+        const getUrlValues = () => {
+            return {
+                Backend: SS_Url.resolveScript(SS_Constants.Scripts.CustomerStatement.Backend),
+                Transaction: '/app/accounting/transactions/transaction.nl?id='
+            };
+        };
+
+
+        /**
+         * @function loadSearch
+         * @description Load a saved search
+         * @param options
+         * @param {String} options.searchId
+         * @returns {Object} search
+         * @example loadSearch({ searchId });
+         */
+        const loadSearch = (options) => {
+            let title = `${MODULE}.LoadSearch`;
+            let { searchId } = options;
+            let searchIdParam = SS_Script.getParameter({ name: searchId });
+            if (!searchIdParam) {
+                log.error({ title: title, details: ERROR_MISSINGPARAM({ type: ERROR_TYPES.MISSING_MEDIA_SEARCH })})
+                return null;
+            }
+
+            return SS_Search.load({ id: searchIdParam });
+        };
+
+        /**
+         * @function mapParametersToFields
+         * @description Map the request parameters to the form fields
+         * @param options
+         * @param {Object} options.parameters
+         * @returns {Object} output
+         */
+        const mapParametersToFields = (options) => {
+            let title = `${MODULE}.MapParametersToFields`;
+            let { parameters } = options;
+            let output = {};
+
+            for (let i = 0, count = REQUEST_PARAMS.length; i &lt; count; i++) {
+                let key = REQUEST_PARAMS[i];
+                if (!parameters[key]) {
+                    continue;
+                }
+
+                let field = FORM.Fields.find(f => {
+                    return f.filter === true &amp;&amp;
+                        key === SS_String.normalize(f.label);
+                })?.id
+                if (!field) {
+                    continue;
+                }
+                output[field] = parameters[key];
+            }
+            log.debug({ title: `${title} output`, details: JSON.stringify(output) });
+
+            return output;
+        };
+
+        /**
+         * @function writeDataTable
+         * @description Write the data table to the form
+         * @param options
+         * @param {Object} options.data
+         * @param {Object} options.form
+         * @param {String} options.template
+         * @example writeDataTable({ data, form, template });
+         */
+        const writeDataTable = (options) => {
+            let title = `${MODULE}.WriteDataTable`;
+            let { form, template } = options;
+            let tableContents = SS_File.read({ name: template });
+            log.debug({ title: title, details: tableContents });
+
+            let tableField = SS_UI.getField({ id: 'custpage_table', parent: form });
+            tableField.defaultValue = tableContents;
+        };
+
+        return {
+            buildUI,
+            createStatementTask,
+            getRequestParameters,
+            getTableData
+        };
+    }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

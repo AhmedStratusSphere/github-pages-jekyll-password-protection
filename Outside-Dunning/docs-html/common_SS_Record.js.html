@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> common/SS_Record.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>common/SS_Record.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Wrapper module for N/record
+ *
+ * @NApiVersion     2.1
+ * @NModuleScope    SameAccount
+ *
+ * @module SS_Record
+ * @public
+ *
+ * @description This module is a wrapper for the N/record module
+ *
+ * @requires N/record
+ * @requires SS_Constants
+ *
+ *
+ * @return {Object} Record
+ * @exports Record
+ * @exports Type
+ * @exports cast
+ * @exports copy
+ * @exports create
+ * @exports delete
+ * @exports load
+ * @exports submitFields
+ * @exports transform
+ *
+ *
+ */
+
+define(
+    [
+        'N/record',
+        './SS_Constants'
+    ],
+    (
+        NS_Record,
+        SS_Constants
+    ) => {
+
+        /**
+         * @class Record
+         * @description Wrapper class for N/record
+         *
+         * @param {Object} options
+         * @param {Object} options.record
+         * @param {string} options.record.id
+         * @param {string} options.record.type
+         *
+         * @return {Object} Record
+         *
+         * @example new Record({ record: record });
+         *
+         *
+         */
+        class Record {
+            record;
+            id;
+            type;
+
+            constructor(options) {
+                this.record = options.record;
+                this.id = options.record.id || '';
+                this.type = options.record.type;
+            };
+
+            get Id() {
+                return this.id;
+            };
+
+            get Type() {
+                return this.type;
+            };
+
+            commitLine(options) {
+                this.record.commitLine(options);
+            }
+
+            findSublistLineWithValue(options) {
+                return this.record.findSublistLineWithValue(options);
+            }
+
+            getCurrentLineValues(options) {
+                let { sublistId } = options;
+                let output = {};
+
+                if (!!options.fields?.length === false) {
+                    return output;
+                }
+
+                for (let i = 0, count = options.fields.length; i &lt; count; i++) {
+                    let fieldId = options.fields[i];
+                    output[fieldId] = this.record.getCurrentSublistValue({ sublistId, fieldId });
+                }
+
+                return output;
+            }
+
+            getCurrentSublistSubrecord(options) {
+                return this.record.getCurrentSublistSubrecord(options);
+            }
+
+            getField(options) {
+                return this.record.getField(options);
+            };
+
+            getLineCount(options) {
+                return this.record.getLineCount(options);
+            }
+
+            getHeaderText(options) {
+                return this.record.getText(options);
+            }
+
+            getHeaderTexts(options) {
+                if (!!options.fields?.length) {
+                    return {};
+                }
+
+                let output = { id: this.id };
+                for (let i = 0, count = options.fields.length; i &lt; count; i++) {
+                    let fieldId = options.fields[i];
+                    output[fieldId] = this.getHeaderText({ fieldId });
+                }
+
+                return output;
+            }
+
+            getHeaderValue(options) {
+                if (options.fieldId === 'id') {
+                    return this.record.id;
+                }
+                else {
+                    return this.record.getValue(options);
+                }
+            };
+
+            getHeaderValues(options) {
+                const TITLE = `Record.getHeaderValues`;
+                log.debug({ title: `${TITLE} options`, details: JSON.stringify(options) });
+                if (!!options.fields?.length === false) {
+                    return {};
+                }
+
+                let output = { id: this.id };
+                for (let i = 0, count = options.fields.length; i &lt; count; i++) {
+                    let fieldId = options.fields[i];
+                    output[fieldId] = this.getHeaderValue({ fieldId });
+                    log.debug({ title: `${TITLE} getHeaderValue`, details: `fieldId = ${fieldId}; value = ${output[fieldId]}` });
+                }
+
+                /* const FIELDS = SS_Constants.CustomRecords.VendorRequest.Fields;
+                [ FIELDS.BANK_DETAIL_METHOD, FIELDS.TYPE_OF_ACCOUNT ].forEach(fieldId => {
+                    output[fieldId] = this.record.getValue({ fieldId });
+                    log.debug({ title: `${TITLE} getHeaderValue`, details: `fieldId = ${fieldId}; value = ${output[fieldId]}` });
+                }); */
+
+                log.debug({ title: `${TITLE} output`, details: JSON.stringify(output) });
+                return output;
+            };
+
+            getLineValues(options) {
+                let { sublistId, line } = options;
+                let output = {};
+
+                if (!!options.fields?.length === false) {
+                    return output;
+                }
+
+                for (let i = 0, count = options.fields.length; i &lt; count; i++) {
+                    let fieldId = options.fields[i];
+                    output[fieldId] = this.record.getSublistValue({ sublistId, fieldId, line });
+                }
+
+                return output;
+            }
+
+            getSublistSubrecord(options) {
+                return this.record.getSublistSubrecord(options);
+            }
+
+            getSublistValue(options) {
+                let { sublistId, fieldId, line = 0 } = options;
+                if (!sublistId) { return ''; }
+                if (!fieldId) { return ''; }
+
+                return this.record.getSublistValue({ sublistId, fieldId, line });
+            };
+
+            getSublistValues(options) {
+                const TITLE = `Record.getSublistValues`;
+                log.debug({ title: `${TITLE} options`, details: JSON.stringify(options) });
+                let output = [];
+                if (!!options.fields?.length === false) {
+                    return output;
+                }
+
+                let { sublistId, fields } = options;
+                for (let i = 0, count = this.getLineCount({ sublistId }); i &lt; count; i++) {
+                    let rowValues = { line: i };
+                    fields.forEach(fieldId => {
+                        rowValues[fieldId] = this.getSublistValue({ sublistId, fieldId, line: i });
+                    })
+                    output.push(rowValues);
+                }
+
+                log.debug({ title: `${TITLE} output`, details: JSON.stringify(output) });
+                return output;
+            }
+
+            getText(options) {
+                return this.record.getText(options);
+            }
+
+            getTexts(options) {
+                if (!!options.fields?.length) {
+                    return {};
+                }
+
+                let output = {};
+                for (let i = 0, count = options.fields.length; i &lt; count; i++) {
+                    let fieldId = options.fields[i];
+                    output[fieldId] = this.getText({ fieldId });
+                }
+
+                return output;
+            }
+
+            getValue(options) {
+                if (options.fieldId === 'id') {
+                    return this.record.id;
+                }
+                else {
+                    return this.record.getValue(options);
+                }
+            };
+
+            getValues(options) {
+                const TITLE = `Record.getHeaderValues`;
+                log.debug({ title: `${TITLE} options`, details: JSON.stringify(options) });
+                if (!!options.fields?.length === false) {
+                    return {};
+                }
+
+                let output = {};
+                for (let i = 0, count = options.fields.length; i &lt; count; i++) {
+                    let fieldId = options.fields[i];
+                    output[fieldId] = this.getValue({ fieldId });
+                }
+
+                log.debug({ title: `${TITLE} output`, details: JSON.stringify(output) });
+                return output;
+            };
+
+            getSublistValue(options) {
+                let { sublistId, fieldId, line = 0 } = options;
+                if (!sublistId) { return ''; }
+                if (!fieldId) { return ''; }
+
+                return this.record.getSublistValue({ sublistId, fieldId, line });
+            };
+
+            getSublistValues(options) {
+                const TITLE = `Record.getSublistValues`;
+                log.debug({ title: `${TITLE} options`, details: JSON.stringify(options) });
+                let output = [];
+                if (!!options.fields?.length === false) {
+                    return output;
+                }
+
+                let { sublistId, fields } = options;
+                for (let i = 0, count = this.getLineCount({ sublistId }); i &lt; count; i++) {
+                    let rowValues = { line: i };
+                    fields.forEach(fieldId => {
+                        rowValues[fieldId] = this.getSublistValue({ sublistId, fieldId, line: i });
+                    })
+                    output.push(rowValues);
+                }
+
+                log.debug({ title: `${TITLE} output`, details: JSON.stringify(output) });
+                return output;
+            }
+
+            removeLine(options) {
+                this.record.removeLine(options);
+            }
+
+            save(options) {
+                return this.record.save(options);
+            }
+
+            selectNewLine(options) {
+                log.debug({ title: `SS_Record.SelectNewLine record`, details: JSON.stringify(this.record) });
+                let { sublistId } = options;
+                this.record.selectNewLine({ sublistId });
+            }
+
+            setCurrentSublistValue(options) {
+                this.record.setCurrentSublistValue(options);
+            }
+
+            setCurrentSublistValues(options) {
+                let { sublistId, values } = options;
+                for (const [fieldId, value] of Object.entries(values)) {
+                    this.setCurrentSublistValue({ sublistId, fieldId, value });
+                }
+            }
+
+            setHeaderText(options) {
+                if (options.skipEmpty === true &amp;&amp; !!options.value?.trim() === false) {
+                    return;
+                }
+
+                log.debug({ title: `Record setHeaderText`, details: JSON.stringify(options) });
+                this.record.setText(options);
+            }
+
+            setHeaderTexts(options) {
+                for (const [fieldId, value] of Object.entries(options)) {
+                    this.setHeaderText({ fieldId, value });
+                }
+            }
+
+            setHeaderValue(options) {
+                if (options.skipEmpty === true &amp;&amp; !!options.value?.trim() === false) {
+                    return;
+                }
+
+                log.debug({ title: `Record setHeaderValue`, details: JSON.stringify(options) });
+                this.record.setValue(options);
+            }
+
+            setHeaderValues(options) {
+                for (const [fieldId, value] of Object.entries(options)) {
+                    this.setHeaderValue({ fieldId, value });
+                }
+            }
+
+            setText(options) {
+                if (options.skipEmpty === true &amp;&amp; !!options.value?.trim() === false) {
+                    return;
+                }
+
+                this.record.setText(options);
+            }
+
+            setTexts(options) {
+                for (const [fieldId, value] of Object.entries(options)) {
+                    this.setText({ fieldId, value });
+                }
+            }
+
+            setValue(options) {
+                if (options.skipEmpty === true &amp;&amp; !!options.value?.trim() === false) {
+                    return;
+                }
+
+                log.debug({ title: `Record setHeaderValue`, details: JSON.stringify(options) });
+                this.record.setValue(options);
+            }
+
+            setValues(options) {
+                for (const [fieldId, value] of Object.entries(options)) {
+                    this.setValue({ fieldId, value });
+                }
+            }
+
+            setSublistValue(options) {
+                this.record.setSublistValue(options);
+            }
+
+            setSublistValues(options) {
+                let { sublistId, line, values } = options
+                for (const [fieldId, value] of Object.entries(values)) {
+                    this.setSublistValue({ sublistId, fieldId, line, value });
+                }
+            }
+        }
+
+        return {
+            Record: Record,
+            get Type() {
+                return NS_Record.Type;
+            },
+            cast(record) {
+                return new Record({ record });
+            },
+            copy(options) {
+                return this.cast(NS_Record.copy(options));
+            },
+            create(options) {
+                return this.cast(NS_Record.create(options));
+            },
+            delete(options) {
+                return NS_Record.delete(options);
+            },
+            load(options) {
+                return this.cast(NS_Record.load(options));
+            },
+            submitFields(options) {
+                return NS_Record.submitFields(options);
+            },
+            transform(options) {
+                return this.cast(NS_Record.transform(options));
+            }
+        };
+    }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

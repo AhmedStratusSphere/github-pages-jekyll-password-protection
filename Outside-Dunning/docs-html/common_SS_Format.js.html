@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> common/SS_Format.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>common/SS_Format.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Wrapper module for N/format
+ *
+ * @NApiVersion     2.1
+ * @NModuleScope    SameAccount
+ *
+ * @fileoverview    Wrapper module for N/format
+ * @module          SS_Format
+ * @public
+ *
+ * @requires        N/format
+ *
+ * @return {Object}  SS_Format
+ * @return {Function} SS_Format.clean
+ * @return {Function} SS_Format.dateToString
+ * @return {Function} SS_Format.format
+ * @return {Function} SS_Format.isEmpty
+ * @return {Function} SS_Format.normalizeDate
+ * @return {Function} SS_Format.parse
+ *
+ *
+ */
+
+define(
+    [
+        'N/format',
+    ],
+    (
+        NS_Format
+    ) => {
+
+        /**
+         * @name MODULE
+         * @description Module name for logging
+         * @type {string}
+         *
+         * @constant
+         *
+         * @example MODULE = 'outside.Format'
+         */
+        const MODULE = 'outside.Format';
+
+        /**
+         * @function cleanObject
+         * @param {Object} param
+         * @description Clean an object by removing any empty properties
+         * @returns {Object}
+         * @example cleanObject({ key: 'value', empty: '' });
+         */
+        const cleanObject = (param) => {
+            if (isEmpty(param)) { return null; }
+
+            for (const [key, value] of Object.entries(param)) {
+                if (isEmpty(value)) {
+                    delete param[key];
+                }
+            }
+            if (isEmpty(param)) { return null; }
+
+            return param;
+        };
+
+        /**
+         * @function cleanString
+         * @param {string} value
+         * @param {string} delimiter
+         * @description Clean a string by removing spaces, slashes, pipes, and underscores
+         * @returns {string}
+         * @example cleanString('This is a string');
+         * @example cleanString('This is a string', '_');
+         * @example cleanString('This is a string', '-');
+         *
+         */
+        const cleanString = (value, delimiter) => {
+            if (!value) { return ''; }
+
+            let delim = delimiter || '';
+            let output = value?.toLowerCase();
+            output = output.replaceAll(' ', delim);
+            output = output.replaceAll('/', delim);
+            output = output.replaceAll('|', delim);
+            output = output.replaceAll('_', delim);
+
+            return output;
+        };
+
+        /**
+         * @function dateToString
+         * @param {Date} date
+         * @description Convert a date to a string
+         * @returns {string}
+         * @example dateToString(new Date());
+         * @example dateToString(new Date('2021-01-01'));
+         */
+        const dateToString = (date) => {
+            if (!date) { return '' };
+            return NS_Format.format({ type: NS_Format.Type.DATE, value: date });
+        };
+
+        /**
+         * @function formatCurrency
+         * @param {Object} options
+         * @param {string} options.symbol
+         * @param {number} options.value
+         * @param {boolean} options.hideSymbol
+         * @description Format a currency value
+         * @returns {string}
+         * @example formatCurrency({ value: 1000 });
+         * @example formatCurrency({ value: 1000, symbol: '£' });...
+         */
+        const formatCurrency = (options) => {
+            let symbol = options.hideSymbol === true ? '' : (options.symbol || '$');
+            let inputValue = options.value || 0;
+            if (inputValue == 0) {
+                return `${symbol}0.00`;
+            }
+            else {
+                return `${symbol}${NS_Format.format({ type: NS_Format.Type.CURRENCY, value: inputValue })}`;
+            }
+        };
+
+        /**
+         * @function formatDate
+         * @param {Object} options
+         * @param {Date} options.value
+         * @description Format a date value
+         * @returns {string}
+         * @example formatDate({ value: new Date() });
+         * @example formatDate({ value: new Date('2021-01-01') });
+         * @example formatDate({ value: null });
+         */
+        const formatDate = (options) => {
+            return options.value ? NS_Format.format({ type: NS_Format.Type.DATE, value: options.value }) : '';
+        };
+
+        /**
+         * @function formatFloat
+         * @param {Object} options
+         * @param {number} options.value
+         * @description Format a floating point number
+         * @returns {string}
+         */
+        const formatFloat = (options) => {
+            return options.value ? NS_Format.format({ type: NS_Format.Type.FLOAT, value: options.value }) : '';
+        };
+
+        /**
+         * @function formatInteger
+         * @param {Object} options
+         * @param {number} options.value
+         * @description Format an integer
+         * @returns {string}
+         * @example formatInteger({ value: 1000 });
+         * @example formatInteger({ value: 1000.00 });
+         */
+        const formatInteger = (options) => {
+            return options.value ? NS_Format.format({ type: NS_Format.Type.INTEGER, value: options.value }) : '';
+        };
+
+        return {
+            get Type() {
+                return NS_Format.Type;
+            },
+            clean(param) {
+                let output = null;
+                let type = Object.prototype.toString.call(param);
+                switch (type) {
+                    case '[object Object]': {
+                        output = cleanObject(param);
+                        break;
+                    }
+                    case '[object String]': {
+                        output = cleanString(param);
+                        break;
+                    }
+                }
+
+                return output;
+            },
+            dateToString,
+            format(options) {
+                switch (options.type) {
+                    case this.Type.CURRENCY: {
+                        return formatCurrency(options);
+                    }
+                    case this.Type.DATE: {
+                        return formatDate(options);
+                    }
+                    case this.Type.FLOAT: {
+                        return formatFloat(options);
+                    }
+                    case this.Type.INTEGER: {
+                        return formatInteger(options);
+                    }
+                    default: {
+                        return options.value;
+                    }
+                }
+            },
+            isEmpty(value) {
+                let output = false;
+                let type = Object.prototype.toString.call(value);
+                switch (type) {
+                    case '[object Object]': {
+                        if (Object.keys.length &lt;= 0) {
+                            output = true;
+                        }
+                        break;
+                    }
+                    case '[object String]': {
+                        if (value == '' || value == null || value == undefined) {
+                            output = true;
+                        }
+                        else if (value.trim() == '') {
+                            output = true;
+                        }
+                        break;
+                    }
+                }
+
+                return output;
+            },
+            normalizeDate(options) {
+                let date = NS_Format.parse({ type: this.Type.DATE, value: options.value });
+                let output = dateToString(date);
+                return output;
+            },
+            parse(options) {
+                return NS_Format.parse(options)
+            }
+        }
+    }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

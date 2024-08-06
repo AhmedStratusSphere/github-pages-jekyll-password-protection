@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> common/SS_Transaction.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-SS_CS_CustomerNotices.html">SS_CS_CustomerNotices</a></li><li><a href="module-SS_CS_DunningLetters.html">SS_CS_DunningLetters</a></li><li><a href="module-SS_CS_DunningLettersInv.html">SS_CS_DunningLettersInv</a></li><li><a href="module-SS_CS_DunningStatements.html">SS_CS_DunningStatements</a></li><li><a href="module-SS_Constants.html">SS_Constants</a></li><li><a href="module-SS_CurrentRecord.html">SS_CurrentRecord</a></li><li><a href="module-SS_DataTable.html">SS_DataTable</a></li><li><a href="module-SS_DataTableBackend.html">SS_DataTableBackend</a></li><li><a href="module-SS_DataTableSuitelet.html">SS_DataTableSuitelet</a></li><li><a href="module-SS_DataTableTask.html">SS_DataTableTask</a></li><li><a href="module-SS_Dialog.html">SS_Dialog</a></li><li><a href="module-SS_DunningLetters.html">SS_DunningLetters</a></li><li><a href="module-SS_DunningStatements.html">SS_DunningStatements</a></li><li><a href="module-SS_File.html">SS_File</a></li><li><a href="module-SS_Format.html">SS_Format</a></li><li><a href="module-SS_Lib_CustomerStatements.html">SS_Lib_CustomerStatements</a></li><li><a href="module-SS_Query.html">SS_Query</a></li><li><a href="module-SS_Record.html">SS_Record</a></li><li><a href="module-SS_Request.html">SS_Request</a></li><li><a href="module-SS_Runtime.html">SS_Runtime</a></li><li><a href="module-SS_SL_DataTables.html">SS_SL_DataTables</a></li><li><a href="module-SS_SL_DataTables_Backend.html">SS_SL_DataTables_Backend</a></li><li><a href="module-SS_Script.html">SS_Script</a></li><li><a href="module-SS_Search.html">SS_Search</a></li><li><a href="module-SS_String.html">SS_String</a></li><li><a href="module-SS_Task.html">SS_Task</a></li><li><a href="module-SS_Transaction.html">SS_Transaction</a></li><li><a href="module-SS_UI.html">SS_UI</a></li><li><a href="module-SS_Url.html">SS_Url</a></li></ul><h3>Classes</h3><ul><li><a href="module-SS_DataTable-DataTable.html">DataTable</a></li><li><a href="module-SS_Record-Record.html">Record</a></li><li><a href="module-SS_Search-Search.html">Search</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>common/SS_Transaction.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Wrapper module for Transaction constants
+ *
+ * @module         SS_Transaction
+ * @public
+ * @NApiVersion     2.1
+ * @NModuleScope    SameAccount
+ *
+ * @requires       N/record
+ *
+ * @return {Object}  SS_Transaction
+ * @return {Object}  SS_Transaction.Fields
+ * @return {Object}  SS_Transaction.SublistFields
+ * @return {Object}  SS_Transaction.Sublists
+ * @return {Object}  SS_Transaction.Types
+ *
+ *
+ */
+
+define(
+    [
+        'N/record'
+    ],
+    (
+        NS_Record
+    ) => {
+
+        /**
+         * @name FIELDS
+         * @description Transaction fields
+         * @type {Object}
+         * @constant
+         *
+         * @property {string} ACCOUNT
+         * @property {string} ALT_NAME
+         * @property {string} AMOUNT_REMAINING
+         * @property {string} BALANCE
+         * @property {string} CLASS
+         * @property {string} CLEARED
+         * @property {string} CLEARED_DATE
+         * @property {string} CREATED_FROM
+         * @property {string} CURRENCY
+         * @property {string} CURRENCY_NAME
+         * @property {string} CURRENCY_SYMBOL
+         * @property {string} CUSTOM_FORM
+         * @property {string} DAYS_OVERDUE
+         * @property {string} DEPARTMENT
+         * @property {string} ENTITY
+         * @property {string} EXCHANGE_RATE
+         * @property {string} EXTERNAL_ID
+         * @property {string} ID
+         * @property {string} INTERNAL_ID
+         * @property {string} IS_BASE_CURRENCY
+         * @property {string} JOB
+         * @property {string} LAST_MODIFIED_DATE
+         * @property {string} LOCATION
+         * @property {string} MEMO
+         * @property {string} NAME
+         * @property {string} OTHER_REF_NUM
+         * @property {string} PAYMENT
+         * @property {string} POSTING_PERIOD
+         * @property {string} PREPAYMENT_ACCOUNT
+         * @property {string} PRINT_VOUCHER
+         * @property {string} PURCHASE_ORDER
+         * @property {string} STATUS
+         * @property {string} SUBSIDIARY
+         * @property {string} SUPERVISOR_APPROVAL
+         * @property {string} TERMS
+         * @property {string} TO_BE_PRINTED
+         * @property {string} TRAN_DATE
+         * @property {string} TRAN_ID
+         * @property {string} TRANSACTION_NUMBER
+         * @property {string} VENDOR
+         *
+         */
+        const FIELDS = {
+            ACCOUNT:                    'account',
+            ALT_NAME:                   'altname',
+            AMOUNT_REMAINING:           'amountremaining',
+            BALANCE:                    'balance',
+            CLASS:                      'class',
+            CLEARED:                    'cleared',
+            CLEARED_DATE:               'cleareddate',
+            CREATED_FROM:               'createdfrom',
+            CURRENCY:                   'currency',
+            CURRENCY_NAME:              'currencyname',
+            CURRENCY_SYMBOL:            'currencysymbol',
+            CUSTOM_FORM:                'customform',
+            DAYS_OVERDUE:               'daysoverdue',
+            DEPARTMENT:                 'department',
+            ENTITY:                     'entity',
+            EXCHANGE_RATE:              'exchangerate',
+            EXTERNAL_ID:                'externalid',
+            ID:                         'id',
+            INTERNAL_ID:                'internalid',
+            IS_BASE_CURRENCY:           'isbasecurrency',
+            JOB:                        'job',
+            LAST_MODIFIED_DATE:         'lastmodifieddate',
+            LOCATION:                   'location',
+            MEMO:                       'memo',
+            NAME:                       'name',
+            OTHER_REF_NUM:              'otherrefnum',
+            PAYMENT:                    'payment',
+            POSTING_PERIOD:             'postingperiod',
+            PREPAYMENT_ACCOUNT:         'prepaymentaccount',
+            PRINT_VOUCHER:              'printvoucher',
+            PURCHASE_ORDER:             'purchaseorder',
+            STATUS:                     'status',
+            SUBSIDIARY:                 'subsidiary',
+            SUPERVISOR_APPROVAL:        'supervisorapproval',
+            TERMS:                      'terms',
+            TO_BE_PRINTED:              'tobeprinted',
+            TRAN_DATE:                  'trandate',
+            TRAN_ID:                    'tranid',
+            TRANSACTION_NUMBER:         'transactionnumber',
+            VENDOR:                     'vendor'
+        };
+
+
+        /**
+         * @name SUBLISTS
+         * @description Transaction sublists for record
+         * @type {Object}
+         * @constant
+         *
+         * @property {string} ACCOUNTING_BOOKS
+         * @property {string} EXPENSE
+         * @property {string} ITEM
+         *
+         */
+        const SUBLISTS = {
+            ACCOUNTING_BOOKS:           'accountingbookdetail',
+            EXPENSE:                    'expense',
+            ITEM:                       'item'
+        };
+
+
+        /**
+         * @name SUBLIST_FIELDS
+         * @description Transaction sublist fields
+         * @type {Object}
+         * @constant
+         *
+         * @property {string} ACCOUNTING_BOOK
+         * @property {string} AMOUNT
+         * @property {string} CLASS
+         * @property {string} DEPARTMENT
+         * @property {string} DESCRIPTION
+         * @property {string} EXCHANGE_RATE
+         * @property {string} ITEM
+         * @property {string} PORT
+         * @property {string} QUANTITY
+         * @property {string} RATE
+         * @property {string} VOYAGE
+         *
+         *
+         */
+        const SUBLIST_FIELDS = {
+            ACCOUNTING_BOOK:            'accountingbook',
+            AMOUNT:                     'amount',
+            CLASS:                      'class',
+            DEPARTMENT:                 'department',
+            DESCRIPTION:                'description',
+            EXCHANGE_RATE:              'exchangerate',
+            ITEM:                       'item',
+            PORT:                       'custcol_osg_port',
+            QUANTITY:                   'quantity',
+            RATE:                       'rate',
+            VOYAGE:                     'cseg_osg_voyage'
+        };
+
+
+        /**
+         * @name TYPES
+         * @description Transaction types
+         * @type {Object}
+         * @constant
+         *
+         * @property {string} CASH_REFUND
+         * @property {string} CASH_SALE
+         * @property {string} CUSTOMER_DEPOSIT
+         * @property {string} CUSTOMER_PAYMENT
+         * @property {string} CUSTOMER_REFUND
+         * @property {string} DEPOSIT
+         * @property {string} DEPOSIT_APPLICATION
+         * @property {string} INVOICE
+         * @property {string} ITEM_FULFILLMENT
+         * @property {string} JOURNAL_ENTRY
+         * @property {string} PURCHASE_ORDER
+         * @property {string} SALES_ORDER
+         * @property {string} VENDOR_BILL
+         * @property {string} VENDOR_PAYMENT
+         * @property {string} VENDOR_PREPAYMENT
+         */
+        const TYPES = {
+            CASH_REFUND:                'cashrefund',
+            CASH_SALE:                  'cashsale',
+            CUSTOMER_DEPOSIT:           'customerdeposit',
+            CUSTOMER_PAYMENT:           'customerpayment',
+            CUSTOMER_REFUND:            'customerrefund',
+            DEPOSIT:                    'deposit',
+            DEPOSIT_APPLICATION:        'depositapplication',
+            INVOICE:                    'invoice',
+            ITEM_FULFILLMENT:           'itemfulfillment',
+            JOURNAL_ENTRY:              'journalentry',
+            PURCHASE_ORDER:             'purchaseorder',
+            SALES_ORDER:                'salesorder',
+            VENDOR_BILL:                'vendorbill',
+            VENDOR_PAYMENT:             'vendorpayment',
+            VENDOR_PREPAYMENT:          'vendorprepayment'
+        };
+
+        return {
+            get Fields() {
+                return FIELDS;
+            },
+            get SublistFields() {
+                return SUBLIST_FIELDS;
+            },
+            get Sublists() {
+                return SUBLISTS;
+            },
+            get Types() {
+                return TYPES;
+            },
+        }
+    }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
