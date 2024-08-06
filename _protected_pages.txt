@@ -1,2 +1,3 @@
 ./Outside-Dunning/docs-html/index.html examplepassword
 ./example1/example.html examplepassword3
+./example2/example-2.html examplepassword4
