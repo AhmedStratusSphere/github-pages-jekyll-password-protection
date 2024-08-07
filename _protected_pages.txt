@@ -1,1 +1,3 @@
 ./Outside-Dunning/docs-html/index.html examplepassword
+./Aztech-CostCode/docs-html/index.html examplepassword3
+./Moore-CommissionDMFLineItem/docs-html/index.html examplepassword4

@@ -1,0 +1,1130 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> ss_ue_commission_calc_line_item.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+
+<div class="top-nav">
+    <div class="inner">
+        <img src="logo.jpeg" style="width: 3%">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+
+
+        </div>
+        <div class="menu">
+
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+
+            <nav>
+
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-ss_cs_clear_pdf_group_line.html">ss_cs_clear_pdf_group_line</a></li><li><a href="module-ss_ue_commission_calc_line_item.html">ss_ue_commission_calc_line_item</a></li></ul></div>
+
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>ss_ue_commission_calc_line_item.js</h1>
+                </header>
+
+
+
+
+
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @Description This script manages the addition  of commission and DMF (Dealer Marketing Fund) line items
+ * in NetSuite records. It automatically updates these line items based on set conditions and parameters.
+ * @NApiVersion 2.x
+ * @NScriptType UserEventScript
+ * @Title Commission and DMF Line Item Management Script
+ *
+ * @module  ss_ue_commission_calc_line_item
+ * @requires N/runtime
+ * @requires N/log
+ */
+
+define(['N/runtime', 'N/log'], function (runtime, log) {
+
+
+    /**
+     * Handles the before submit event for the transaction records
+     * - This function manages the addition of commission and DMF line items based on the current state of each line item in the transaction.
+     * - This function also manages the sequencing of PDF group numbers for commission and DMF line items.
+     *
+     * @function beforeSubmit
+     * @name beforeSubmit
+     * @param {Object} context - The context object containing the new record.
+     *
+     * @returns {void}
+     *
+     * @throws {error} Throws an error if an error occurs.
+     *
+     * @example
+     * beforeSubmit(context);
+     *
+     */
+
+    function beforeSubmit(context) {
+
+        try {
+
+
+            /**
+             * @name newRecord
+             * @type {object}
+             * @description The new record object from the context
+             *
+             * @example let newRecord = context.newRecord;
+             *
+             */
+            var newRecord = context.newRecord;
+
+            /**
+             * @name sublistName
+             *  @type {string}
+             *  @description The name of the sublist being processed
+             *
+             *  @example var sublistName = 'item';
+             */
+            var sublistName = 'item';
+
+            /**
+             * @name lineCount
+             * @type {number}
+             * @description The number of lines in the sublist
+             *
+             * @example var lineCount = newRecord.getLineCount({sublistId: sublistName});
+             *
+             */
+            var lineCount = newRecord.getLineCount({sublistId: sublistName});
+
+            /**
+             * @name bodyCommission
+             * @type {number}
+             * @description The body commission rate from the SO transaction record
+             *
+             * @example
+             * newRecord.getValue({fieldId: 'custbody_moore_media_commission'}) = 15%
+             * var bodyCommission = newRecord.getValue({fieldId: 'custbody_moore_media_commission'}) / 100;
+             *
+             */
+            var bodyCommission = newRecord.getValue({fieldId: 'custbody_moore_media_commission'}) / 100;
+
+            /**
+             * @name mediaBillType
+             * @type {string}
+             * @description The media billing type from the SO transaction record
+             *
+             * @example
+             * var mediaBillType = newRecord.getValue({fieldId: 'custbody_moore_media_billing_type'});
+             */
+            var mediaBillType = newRecord.getValue({fieldId: 'custbody_moore_media_billing_type'});
+
+            /**
+             * @name isPostBill
+             * @type {boolean}
+             * @description Flag indicating if the media billing type is post-bill
+             *
+             * @example
+             * var isPostBill = mediaBillType === '2';
+             * return true if mediaBillType is post-bill
+             *
+             */
+            var isPostBill = mediaBillType === '2';
+
+            /**
+             * @name uniquePdfGroupNumbers
+             * @type {Array}
+             * @description An array of unique PDF group numbers
+             *
+             * @example
+             * var uniquePdfGroupNumbers = [ '1', '2', '3', '4', '5' ];
+             *
+             */
+            var uniquePdfGroupNumbers = getUniquePdfGroupNumbersFromLines(newRecord, sublistName);
+
+
+
+            var lineCount = newRecord.getLineCount({sublistId: sublistName});
+
+            /**
+             * @name totalCommissionAndDmf
+             * @type {number}
+             * @description The total commission and DMF amount
+             *
+             */
+            var totalCommissionAndDmf = 0;
+
+            var lastCommissionDmfIndex
+
+
+            for (var i = 0; i &lt; lineCount; i++) {
+
+
+                /**
+                 * @name currentItemValue
+                 * @type {Object}
+                 * @description the lines item value object
+                 *
+                 * @example
+                 * var currentItemValue = [currentLineMediaMonth: '1', currentLineItemMediaDmfItem: '1', currentLineItemValue: '1', currentLineMediaDate: '1', currentLineDmfCheckbox: '1', currentLinePdfGroup: '1', currentLineUnits: '1', currentLineIsTaxable: '1', currentLineInviceSort: '1', currentLineMediaCommissionItem: '1', currentLineDivisionDisplayValue: '1', currentLineCommissionCheckbox: '1', currentLineOverrideMediaCheckbox: '1', currentLineMediaBudget: '1', currentLineQuantity: '1', currentLineDescription: '1']
+                 */
+                var currentItemValue = getLineItemValue(newRecord, sublistName, i);
+
+                /**
+                 * @name extractItemDetails
+                 * @type {Object}
+                 * @description The extracted item details object
+                 *
+                 * @example
+                 * var extractItemDetails = [currentLineMediaMonth: '1', itemLineDmf: '1', currentLineItemValue: '1', currentLineMediaDate: '1', itemLineOverrideMediaCalc: '1', currentLinePdfGroup: '1', mediaBudget: '1', mediaDmfItem: '1', mediaCommissionItem: '1', itemLineCommission: '1']
+                 */
+                var extractItemDetails = extractItemDetail(currentItemValue, runtime)
+
+                /**
+                 * @name nextPdfNumber
+                 * @type {number}
+                 * @description The next available PDF group number
+                 *
+                 * @example
+                 * var nextPdfNumber = getNextAvailablePdfNumber(uniquePdfGroupNumbers);
+                 *
+                 */
+                var nextPdfNumber = getNextAvailablePdfNumber(uniquePdfGroupNumbers);
+
+                log.debug('extract item month', getMonthNumber(extractItemDetails.currentLineMediaDate))
+
+                var commissionAmount;
+                var dmfAmount;
+
+
+
+                if (!extractItemDetails.itemLineOverrideMediaCalc &amp;&amp; extractItemDetails.mediaBudget &amp;&amp; (extractItemDetails.itemLineDmf || extractItemDetails.itemLineCommission)) {
+
+
+                    if (!isPostBill &amp;&amp; (extractItemDetails.itemLineDmf || extractItemDetails.itemLineCommission)) {
+
+                        /**
+                         * @name preBill
+                         * @type {number}
+                         * @description if the line item is not overriden and the item is either commissionable or DMF the prebill amount is calculated using the calculatePrebill function
+                         *
+                         * @example
+                         *
+                         * var preBill = calculatePrebill(extractItemDetails.mediaBudget, extractItemDetails.itemLineCommission ? bodyCommission : 0, extractItemDetails.itemLineDmf ? 1 : 0);
+                         */
+
+                        preBill = calculatePrebill(extractItemDetails.mediaBudget, extractItemDetails.itemLineCommission ? bodyCommission : 0, extractItemDetails.itemLineDmf ? 1 : 0);
+
+                        /**
+                         * @name pdfGroupNumberInitValue
+                         * @type {string}
+                         * @description The PDF group number value is set using the UpdateOriginalLineItem function {@link UpdateOriginalLineItem}
+                         *
+                         * @example
+                         *
+                         * var pdfGroupNumberInitValue = UpdateOriginalLineItem(newRecord, sublistName, i, preBill, nextPdfNumber);
+                         *
+                         */
+                        var pdfGroupNumberInitValue = UpdateOriginalLineItem(newRecord, sublistName, i, preBill, nextPdfNumber);
+
+
+                    }
+
+                    if (isPostBill &amp;&amp; (extractItemDetails.itemLineDmf || extractItemDetails.itemLineCommission)) {
+
+                        /**
+                         * @name pdfGroupNumberInitValue
+                         * @type {string}
+                         * @description if the line item is post bill and the item is either commissionable or DMF the PDF group number is set using the UpdateOriginalLineItem function
+                         *
+                         * @example
+                         *
+                         * var pdfGroupNumberInitValue = UpdateOriginalLineItem(newRecord, sublistName, i, extractItemDetails.mediaBudget, nextPdfNumber);
+                         *
+                         */
+
+                        var pdfGroupNumberInitValue = setPDFGroupNumber(newRecord, sublistName, i, nextPdfNumber);
+
+
+                    }
+
+
+                    if (extractItemDetails.itemLineCommission) {
+
+                        /**
+                         * @name commissionAmount
+                         * @type {number}
+                         * @description if the line item is commissionable the commission amount is calculated using the calculateCommission function
+                         *
+                         * @example
+                         *
+                         * var commissionAmount = calculateCommission(extractItemDetails.mediaBudget, bodyCommission, isPostBill, extractItemDetails.itemLineDmf);
+                         * addCommissionLineItem(newRecord, sublistName, extractItemDetails.mediaCommissionItem, commissionAmount, currentItemValue, pdfGroupNumberInitValue);
+                         * */
+                        commissionAmount = calculateCommission(extractItemDetails.mediaBudget, bodyCommission, isPostBill, extractItemDetails.itemLineDmf);
+                        addCommissionLineItem(newRecord, sublistName, extractItemDetails.mediaCommissionItem, commissionAmount, currentItemValue, pdfGroupNumberInitValue);
+
+                        /**
+                         * @name lastCommissionDmfIndex
+                         * @type {number}
+                         * @description The last commission DMF index is set to the current index
+                         *
+                         * @example
+                         *
+                         * lastCommissionDmfIndex = i
+                         */
+                        lastCommissionDmfIndex = i
+
+                    }
+
+
+                    if (extractItemDetails.itemLineDmf) {
+
+                        /**
+                         * @name dmfAmount
+                         * @type {number}
+                         * @description if the line item is DMF the DMF amount is calculated using the calculateDmf function
+                         * @example
+                         * var dmfAmount = calculateDmf(extractItemDetails.mediaBudget, bodyCommission, isPostBill);
+                         * addCommissionLineItem(newRecord, sublistName, extractItemDetails.mediaDmfItem, dmfAmount, currentItemValue, pdfGroupNumberInitValue);
+                         */
+                        dmfAmount = calculateDmf(extractItemDetails.mediaBudget, bodyCommission, isPostBill);
+                        addCommissionLineItem(newRecord, sublistName, extractItemDetails.mediaDmfItem, dmfAmount, currentItemValue, pdfGroupNumberInitValue);
+
+                        /**
+                         * @name lastCommissionDmfIndex
+                         * @type {number}
+                         * @description The last commission DMF index is set to the current index
+                         * @example
+                         * lastCommissionDmfIndex = i
+                         * @type {number}
+                         */
+                        lastCommissionDmfIndex = i
+                    }
+
+
+                }
+
+
+                /**
+                 * @name pdfGroupNumberInitValue
+                 * @type {string}
+                 * @description The PDF group number value is set using the setPDFGroupNumber function
+                 * @example
+                 * var pdfGroupNumberInitValue = setPDFGroupNumber(newRecord, sublistName, i, nextPdfNumber);
+                 *
+                 */
+                var pdfGroupNumberInitValue = setPDFGroupNumber(newRecord, sublistName, i, nextPdfNumber);
+                if (pdfGroupNumberInitValue == nextPdfNumber.toString()) {
+                    uniquePdfGroupNumbers.push(nextPdfNumber.toString());
+                    nextPdfNumber++;
+                }
+
+
+            }
+
+
+            var lineCount = newRecord.getLineCount({sublistId: sublistName});
+            UpdateAllLineItemMediaMonth(newRecord, "item", lineCount)
+            log.debug('lastindex', lastCommissionDmfIndex)
+            adjustAmountOnSpecificCondition(newRecord, lastCommissionDmfIndex)
+
+        } catch (error) {
+            log.error('Error : ', error);
+        }
+
+
+    }
+
+
+    /**
+     * This Function is for Updates the original line item with the specified value and group number.
+     * The Function is called when the line item is not overriden and the item is either commissionable or DMF.
+     * The function also sets the PDF group number for the line item.
+     * The function returns the PDF group number value.
+     *
+     *
+     *
+     * @function UpdateOriginalLineItem
+     *
+     * @param {Object} currentRecord - The current NetSuite record being processed.
+     * @param {string} sublistName - The name of the sublist being modified.
+     * @param {number} lineindex - The line index to update.
+     * @param {number} value - The value to set for the line item.
+     * @param {number} groupNumber - The group number to assign to the line item.
+     * @return {string} The set PDF group number value.
+     *
+     * @example
+     * UpdateOriginalLineItem(currentRecord, sublistName, lineindex, value, groupNumber)
+     */
+
+    function UpdateOriginalLineItem(currentRecord, sublistName, lineindex, value, groupNumber) {
+
+
+        var pdfGroupNumberValue = setPDFGroupNumber(currentRecord, sublistName, lineindex, groupNumber);
+
+
+        currentRecord.setSublistValue({
+            sublistId: sublistName,
+            fieldId: 'amount',
+            line: lineindex,
+            value: value,
+        });
+
+        currentRecord.setSublistValue({
+            sublistId: sublistName,
+            fieldId: 'quantity',
+            line: lineindex,
+            value: value,
+        });
+
+
+        return pdfGroupNumberValue
+
+
+    }
+
+    /**
+     * Adds a commission/DMF  line item to the current Transaction record.
+     * The function also sets the PDF group number for the line item (Commission/DMF)
+     * The function checks if the line item already exists and updates the existing line item if found.
+     *
+     *
+     * @function addCommissionLineItem
+     *
+     * @param {Object} currentRecord - The current NetSuite record being processed.
+     * @param {string} sublistName - The name of the sublist being modified.
+     * @param {number} mediaCommissionItem - The ID of the media commission item.
+     * @param {number} commissionAmount - The amount of commission to apply.
+     * @param {Object} currentItemValue - The current item's value object.
+     * @param {string} pdfGroupNumberInitValue - The initial value of the PDF group number.
+     *
+     * @return {void}
+     */
+
+    function addCommissionLineItem(currentRecord, sublistName, mediaCommissionItem, commissionAmount, currentItemValue, pdfGroupNumberInitValue) {
+        var existingLineIndex = findExistingCommissionDmfLine(currentRecord, sublistName, pdfGroupNumberInitValue, mediaCommissionItem, currentItemValue.currentLineItemMediaDmfItem);
+
+        if (existingLineIndex !== -1) {
+            // Update existing line item
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'quantity',
+                line: existingLineIndex,
+                value: commissionAmount
+            });
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'amount',
+                line: existingLineIndex,
+                value: commissionAmount
+            });
+        } else {
+
+            var lineToAdd = currentRecord.getLineCount({sublistId: sublistName});
+
+            currentRecord.insertLine({sublistId: sublistName, line: lineToAdd, ignoreRecalc: true});
+
+
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'item',
+                line: lineToAdd,
+                value: mediaCommissionItem
+            });
+
+            // currentRecord.setSublistValue({ sublistId: sublistName, fieldId: 'quantity', line: lineToAdd, value: currentItemValue.currentLineQuantity });
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'quantity',
+                line: lineToAdd,
+                value: commissionAmount
+            });
+
+
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'units_display',
+                line: lineToAdd,
+                value: currentItemValue.currentLineUnits
+            });
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcol_agency_mf_flight_start_date',
+                line: lineToAdd,
+                value: currentItemValue.currentLineMediaDate
+            });
+            // currentRecord.setSublistValue({
+            //     sublistId: sublistName,
+            //     fieldId: 'custcolss_media_month',
+            //     line: lineToAdd,
+            //     value: getMonthNumber(currentItemValue.currentLineMediaDate)
+            // });
+
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'description',
+                line: lineToAdd,
+                value: currentItemValue.currentLineDescription
+            });
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcol_moore_media_budget',
+                line: lineToAdd,
+                value: currentItemValue.currentLineMediaBudget
+            });
+
+            //currentRecord.setSublistValue({ sublistId: sublistName, fieldId: 'custcol_ss_pdf_group', line: lineToAdd, value:  groupNumber.toString() });
+            // currentItemValue.currentLinePdfGroup? currentItemValue.currentLinePdfGroup :
+
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcol_ss_pdf_group',
+                line: lineToAdd,
+                value: pdfGroupNumberInitValue
+            });
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'cseg_mh_division',
+                line: lineToAdd,
+                value: currentItemValue.currentLineDivisionDisplayValue
+            });
+
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcol_ss_invice_sort_field',
+                line: lineToAdd,
+                value: currentItemValue.currentLineInviceSort
+            });
+
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcol_ss_origin_item',
+                line: lineToAdd,
+                value: false
+            });
+
+
+            currentRecord.setSublistValue({sublistId: sublistName, fieldId: 'rate', line: lineToAdd, value: '1'});
+
+
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'amount',
+                line: lineToAdd,
+                value: commissionAmount
+            });
+
+
+        }
+
+    }
+
+
+    /**
+     * Calculates the commission amount based on media budget, body media commission, and post-bill flag.
+     * The function returns the calculated commission amount.
+     *
+     * @function calculateCommission
+     * @param {number} mediaBudget - The media budget amount.
+     * @param {number} bodymediaCommission - The body media commission rate.
+     * @param {boolean} isPostBill - Flag indicating if it is post-bill.
+     * @return {number} The calculated commission amount.
+     *
+     * @example
+     * calculateCommission(1000, 0.15, false) --> 150
+     */
+
+    function calculateCommission(mediaBudget, bodymediaCommission, isPostBill,hasDmf) {
+        var commissionAmount;
+        var commissionAmountDMF;
+        log.debug('is post bill', isPostBill)
+        if (isPostBill) {
+            if(hasDmf) {
+                //commissionAmount = mediaBudget * (1 / (1 - bodymediaCommission) - 1);
+                commissionAmountDMF = (mediaBudget / 0.75) - mediaBudget;
+                commissionAmount = (mediaBudget + commissionAmountDMF) / (1 - bodymediaCommission) - (mediaBudget + commissionAmountDMF);
+                log.debug('commissin is post bill')
+            }
+            else{
+                commissionAmount = (mediaBudget / (1-bodymediaCommission)) - mediaBudget;
+                log.debug('commissin is post bill')
+            }
+        } else {
+            commissionAmount = mediaBudget * bodymediaCommission;
+            log.debug('commission amount', parseFloat(commissionAmount.toFixed(2)))
+
+
+        }
+
+        return parseFloat(commissionAmount.toFixed(2));
+    }
+
+
+    /**
+     * Calculates the DMF amount based on media budget, body media commission, and post-bill flag.
+     * The function returns the calculated DMF amount.
+     *
+     * @function calculateDmf
+     * @param {number} mediaBudget - The media budget amount.
+     * @param {number} bodymediaCommission - The body media commission rate.
+     * @param {boolean} isPostBill - Flag indicating if it is post-bill.
+     * @return {number} The calculated DMF amount.
+     *
+     * @example
+     * calculateDmf(1000, 0.15, false) --> 250
+     */
+    function calculateDmf(mediaBudget, bodymediaCommission, isPostBill) {
+        var commissionAmount;
+        log.debug('is post bill dmf', isPostBill)
+        if (isPostBill) {
+            log.debug('DMF is post bill')
+            log.debug('media budget', mediaBudget)
+            log.debug('body media commission', bodymediaCommission)
+         //   commissionAmount = mediaBudget * 0.25;
+            commissionAmount = (mediaBudget / 0.75 ) - mediaBudget;
+
+
+
+        } else {
+
+            commissionAmount = (mediaBudget / (1 / (1 - bodymediaCommission))) * 0.25;
+            log.debug('dmf amount', parseFloat(commissionAmount.toFixed(2)))
+
+        }
+
+        return parseFloat(commissionAmount.toFixed(2));
+    }
+
+
+    /**
+     * Calculates the prebill amount.
+     * The function returns the calculated prebill amount.
+     *
+     *
+     * @function calculatePrebill
+     * @param {number} mediaBudget - The media budget amount.
+     * @param {number} bodymediacommission - The body media commission rate.
+     * @param {number} x - Additional multiplier or parameter.
+     * @return {number} The calculated prebill amount.
+     *
+     * @example
+     * calculatePrebill(1000, 0.15, 1) --> 1000
+     */
+
+    function calculatePrebill(mediaBudget, bodymediacommission, x) {
+
+        var adjustedBudget = mediaBudget / (1 / (1 - bodymediacommission));
+        log.debug('adjust Budget', adjustedBudget)
+        var dmfAmount = ((mediaBudget / (1 / (1 - bodymediacommission))) * 0.25) * x;
+        log.debug('dmf amount', dmfAmount)
+
+        var prebillAmount = adjustedBudget - dmfAmount;
+
+        log.debug('prebill amount', parseFloat(prebillAmount.toFixed(2)))
+
+        return parseFloat(prebillAmount.toFixed(2));
+    }
+
+
+    /**
+     * Retrieves line item values from a given record and line index.
+     * The function returns an object containing line item values.
+     *
+     *
+     * @function getLineItemValue
+     * @param {Object} newRecord - The NetSuite record object.
+     * @param {string} sublistId - The ID of the sublist.
+     * @param {number} line - The line number to retrieve values from.
+     * @return {Object} An object containing line item values.
+     *
+     */
+    function getLineItemValue(newRecord, sublistId, line) {
+        return {
+            currentLineQuantity: newRecord.getSublistValue({sublistId: sublistId, fieldId: 'quantity', line: line}),
+            currentLineUnits: newRecord.getSublistValue({sublistId: sublistId, fieldId: 'units_display', line: line}),
+            currentLineDescription: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'description',
+                line: line
+            }),
+            currentLineCommissionCheckbox: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcolss_commission_line',
+                line: line
+            }),
+            currentLineDmfCheckbox: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcolss_dmf',
+                line: line
+            }),
+            currentLineMediaBudget: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcol_moore_media_budget',
+                line: line
+            }),
+            currentLineOverrideMediaCheckbox: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcol_moore_override_calc',
+                line: line
+            }),
+            // currentLineMediaDate: newRecord.getSublistValue({
+            //     sublistId: sublistId,
+            //     fieldId: 'custcol_agency_mf_flight_start_date',
+            //     line: line
+            // }),
+            currentLineInviceSort: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcol_ss_invice_sort_field',
+                line: line
+            }),
+            currentLineMediaMonth: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcol_moore_media_month',
+                line: line
+            }),
+            currentLineIsTaxable: newRecord.getSublistValue({sublistId: sublistId, fieldId: 'istaxable', line: line}),
+            currentLineItemValue: newRecord.getSublistValue({sublistId: sublistId, fieldId: 'item', line: line}),
+            currentLineDivisionDisplayValue: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'cseg_mh_division',
+                line: line
+            }),
+
+
+            currentLineMediaCommissionItem: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcol_ss_commission_item',
+                line: line
+            }),
+            currentLineItemMediaDmfItem: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcol_ss_dmf_item',
+                line: line
+            }),
+            currentLinePdfGroup: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcol_ss_pdf_group',
+                line: line
+            }),
+            currentLineMediaMonth: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcolss_media_month',
+                line: line
+            }),
+            currentLineMediaDate: newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcol_sii_service_date',
+                line: line
+            }),
+
+
+        };
+    }
+
+
+    /**
+     * Extracts item details from a given line item value object.
+     * The function returns an object containing extracted item details from the getLineItemValue.
+     *
+     * @function extractItemDetail
+     * @param {Object} currentItemValue - The current line item value object.
+     * @param {Object} runtime - The runtime object for getting script parameters.
+     * @return {Object} An object containing extracted item details.
+     *
+     * @example
+     *
+     * extractItemDetail(currentItemValue, runtime) --> { mediaBudget: '1', itemLineCommission: '1', itemLineDmf: '1', itemLineOverrideMediaCalc: '1', currentLineItemValue: '1', ... }
+     */
+    function extractItemDetail(currentItemValue, runtime) {
+
+        var commissionItemParam = runtime.getCurrentScript().getParameter({name: 'custscript_ss_media_commission_item_para'});
+        var dmfItemParam = runtime.getCurrentScript().getParameter({name: 'custscript_ss_dmf_item_para'});
+
+        return {
+            mediaBudget: currentItemValue.currentLineMediaBudget,
+            itemLineCommission: currentItemValue.currentLineCommissionCheckbox,
+            itemLineDmf: currentItemValue.currentLineDmfCheckbox,
+            itemLineOverrideMediaCalc: currentItemValue.currentLineOverrideMediaCheckbox,
+            currentLineItemValue: currentItemValue.currentLineItemValue,
+            mediaCommissionItem: currentItemValue.currentLineMediaCommissionItem ? currentItemValue.currentLineMediaCommissionItem : commissionItemParam,
+            mediaDmfItem: currentItemValue.currentLineItemMediaDmfItem ? currentItemValue.currentLineItemMediaDmfItem : dmfItemParam,
+            currentLinePdfGroup: currentItemValue.currentLinePdfGroup,
+            currentLineMediaMonth: currentItemValue.currentLineMediaMonth,
+            currentLineMediaDate: currentItemValue.currentLineMediaDate,
+        };
+
+    }
+
+
+    /**
+     * Sets the PDF group number for a given line item.
+     * The function returns the set or existing PDF group number.
+     * The function also checks if the PDF group number is null, undefined, empty, or 'unset' and sets the PDF group number if true.
+     *
+     * @function setPDFGroupNumber
+     * @param {Object} currentRecord - The current NetSuite record being processed.
+     * @param {string} sublistName - The name of the sublist being modified.
+     * @param {number} lineIndex - The line index to update.
+     * @param {number} groupNumber - The group number to assign.
+     * @return {string} The set or existing PDF group number.
+     *
+     * @example
+     * setPDFGroupNumber(currentRecord, sublistName, lineIndex, groupNumber) --> '1'
+     */
+
+    function setPDFGroupNumber(currentRecord, sublistName, lineIndex, groupNumber) {
+        var currentGroupNumber = currentRecord.getSublistValue({
+            sublistId: sublistName,
+            fieldId: 'custcol_ss_pdf_group',
+            line: lineIndex
+        });
+
+
+        if (currentGroupNumber === null || currentGroupNumber === undefined || currentGroupNumber === '' || currentGroupNumber === 'unset' || currentGroupNumber.trim() === '') {
+            currentRecord.setSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcol_ss_pdf_group',
+                line: lineIndex,
+                value: groupNumber.toString()
+            });
+            log.debug('Setting new PDF Group Number', groupNumber + ' at line ' + lineIndex);
+            return groupNumber.toString(); // Return the group number that was set
+        } else {
+            log.debug('Existing PDF Group Number found', currentGroupNumber + ' at line ' + lineIndex);
+            return currentGroupNumber; // Return the existing group number
+        }
+    }
+
+
+    /**
+     * Finds an existing commission or DMF line based on group number and item IDs.
+     * The function also checks if the line item is already commissionable or DMF.
+     * The function returns the line index if found, or -1 if not found.
+     *
+     *
+     * @function findExistingCommissionDmfLine
+     * @param {Object} currentRecord - The current NetSuite record being processed.
+     * @param {string} sublistName - The name of the sublist.
+     * @param {number} groupNumber - The group number to look for.
+     * @param {number} mediaCommissionItem - The ID of the media commission item.
+     * @param {number} mediaDmfItem - The ID of the media DMF item.
+     * @return {number} The line index if found, or -1 if not found.
+     *
+     * @example
+     *
+     * findExistingCommissionDmfLine(currentRecord, sublistName, groupNumber, mediaCommissionItem, mediaDmfItem) --> -1
+     */
+    function findExistingCommissionDmfLine(currentRecord, sublistName, groupNumber, mediaCommissionItem, mediaDmfItem) {
+        var lineCount = currentRecord.getLineCount({sublistId: sublistName});
+        for (var i = 0; i &lt; lineCount; i++) {
+            var currentLineGroup = currentRecord.getSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcol_ss_pdf_group',
+                line: i
+            });
+
+            var itemLineDmf = currentRecord.getSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcolss_dmf',
+                line: i
+            });
+
+            var itemLineCommission = currentRecord.getSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcolss_commission_line',
+                line: i
+            });
+
+            var currentItem = currentRecord.getSublistValue({
+                sublistId: sublistName,
+                fieldId: 'item',
+                line: i
+            });
+
+
+            if (currentLineGroup === groupNumber.toString() &amp;&amp; (currentItem === mediaCommissionItem || currentItem === mediaDmfItem) &amp;&amp; !(itemLineDmf || itemLineCommission)) {
+                return i; // Return line index if found
+            }
+        }
+        return -1; // Return -1 if not found
+    }
+
+    /**
+     * Gets unique PDF group numbers from line items in a given sublist.
+     * The function returns an array of unique PDF group numbers.
+     *
+     * @function getUniquePdfGroupNumbersFromLines
+     * @param {Object} newRecord - The NetSuite record object.
+     * @param {string} sublistId - The ID of the sublist.
+     * @return {Array} An array of unique PDF group numbers.
+     *
+     *
+     * @example
+     * getUniquePdfGroupNumbersFromLines(newRecord, sublistId) --> [ '1', '2', '3', '4', '5' ]
+     */
+    function getUniquePdfGroupNumbersFromLines(newRecord, sublistId) {
+        var uniquePdfGroupNumbers = [];
+        var lineCount = newRecord.getLineCount({sublistId: sublistId});
+
+        for (var i = 0; i &lt; lineCount; i++) {
+            var pdfGroupNumber = newRecord.getSublistValue({
+                sublistId: sublistId,
+                fieldId: 'custcol_ss_pdf_group',
+                line: i
+            });
+
+            if (pdfGroupNumber &amp;&amp; uniquePdfGroupNumbers.indexOf(pdfGroupNumber) === -1) {
+                uniquePdfGroupNumbers.push(pdfGroupNumber);
+            }
+        }
+
+        return uniquePdfGroupNumbers;
+    }
+
+
+    /**
+     * Determines the next available PDF group number based on existing numbers for sequencing.
+     * The function returns the next available PDF group number
+     *
+     *
+     * @function getNextAvailablePdfNumber
+     * @param {Array} uniquePdfGroupNumbers - An array of existing PDF group numbers.
+     * @return {number} The next available PDF group number.
+     *
+     * @example
+     * getNextAvailablePdfNumber(uniquePdfGroupNumbers) --> 6
+     */
+    function getNextAvailablePdfNumber(uniquePdfGroupNumbers) {
+
+
+        var numbers = uniquePdfGroupNumbers.map(function (num) {
+            return parseInt(num, 10);
+        });
+
+        for (var i = 0; i &lt; numbers.length; i++) {
+            for (var j = 0; j &lt; (numbers.length - i - 1); j++) {
+                if (numbers[j] > numbers[j + 1]) {
+                    var temp = numbers[j];
+                    numbers[j] = numbers[j + 1];
+                    numbers[j + 1] = temp;
+                }
+            }
+        }
+
+        var nextNumber = 1;
+        for (var i = 0; i &lt; numbers.length; i++) {
+            if (numbers[i] === nextNumber) {
+                nextNumber++;
+            } else if (numbers[i] > nextNumber) {
+                break;
+            }
+        }
+
+        return nextNumber;
+    }
+
+
+    /**
+     * Adjusts the amount of a specific line item based on a specific condition.
+     * The function adjusts the amount of a line item if the total amount is not a whole number.
+     *
+     * @function adjustAmountOnSpecificCondition
+     * @param {Object} newRecord - The NetSuite record object.
+     * @param {number} lineIndexToAdjust - The line index to adjust.
+     *
+     * @example
+     *
+     * adjustAmountOnSpecificCondition(newRecord, lineIndexToAdjust)
+     */
+    function adjustAmountOnSpecificCondition(newRecord, lineIndexToAdjust) {
+        var sublistName = 'item';
+        var lineCount = newRecord.getLineCount({sublistId: sublistName});
+
+        var totalAmount = 0.0;
+
+        // Calculate the total amount of all line items
+        for (var i = 0; i &lt; lineCount; i++) {
+            var lineAmount = newRecord.getSublistValue({
+                sublistId: sublistName,
+                fieldId: 'amount',
+                line: i
+            });
+            totalAmount += parseFloat(lineAmount);
+        }
+
+        log.debug('total amount now', totalAmount)
+        // Calculate the difference between the total amount and the nearest whole number
+        var difference = totalAmount - Math.floor(totalAmount);
+
+        // Check if the difference is approximately 0.01 (accounting for floating point arithmetic issues)
+        if (Math.abs(difference - 0.01) &lt; 0.0001) {
+            log.debug('Adjustment condition triggered');
+
+            if (lineIndexToAdjust >= 0 &amp;&amp; lineIndexToAdjust &lt; lineCount) { // Ensure the target line exists
+                var currentAmount = newRecord.getSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'amount',
+                    line: lineIndexToAdjust
+                });
+                var adjustedAmount = parseFloat(currentAmount) - 0.01;
+
+                // Adjust both quantity and amount if necessary
+                newRecord.setSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'amount',
+                    line: lineIndexToAdjust,
+                    value: adjustedAmount
+                });
+            } else {
+                log.debug('Target line index out of range', 'Line index to adjust: ' + lineIndexToAdjust);
+            }
+        } else {
+            log.debug('No adjustment needed', 'Difference: ' + difference);
+        }
+    }
+
+    /**
+     * Gets the month number from a given date string.
+     * The function returns the month number (1-12) from the date string.
+     *
+     * @function getMonthNumber
+     * @param {string} dateString - The date string to extract the month number from.
+     * @return {number} The month number (1-12).
+     *
+     * @example
+     * getMonthNumber(dateString) --> 6
+     */
+
+    function getMonthNumber(dateString) {
+        var date = new Date(dateString);
+        var month = date.getMonth() + 1; // getMonth() returns 0-11, so add 1 to get 1-12
+        return month;
+    }
+
+    /**
+     *
+     * Updates all line items with the media month based on the start date.
+     * The function updates the media month field for all line items in the sublist.
+     *
+     * @function UpdateAllLineItemMediaMonth
+     * @param {Object} currentRecord - The NetSuite record object.
+     * @param {string} sublistName - The name of the sublist.
+     * @param {number} lineindex - The line index to update.
+     *
+     * @example
+     * UpdateAllLineItemMediaMonth(currentRecord, sublistName, lineindex)
+     */
+    function UpdateAllLineItemMediaMonth(currentRecord, sublistName, lineindex) {
+
+        log.debug('media month line index', lineindex)
+        for(var i = 0; i &lt; lineindex; i++)
+        {
+
+           var itemMediaDate = currentRecord.getSublistValue({
+                sublistId: sublistName,
+                fieldId: 'custcol_agency_mf_flight_start_date',
+                line: i
+           });
+            log.debug('media itemMediaDate', itemMediaDate)
+
+            if(itemMediaDate != null &amp;&amp; itemMediaDate != undefined &amp;&amp; itemMediaDate != '')
+            {
+                currentRecord.setSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'custcolss_media_month',
+                    line: i,
+                    value: getMonthNumber(itemMediaDate)
+                });
+                log.debug('media getMonthNumber(itemMediaDate)', getMonthNumber(itemMediaDate))
+            }
+        }
+
+    }
+
+    return {
+        beforeSubmit: beforeSubmit,
+    };
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                </div>
+            </footer>
+
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> MakeCopyEventHandler.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+
+<div class="top-nav">
+    <div class="inner">
+        <img src="logo.jpeg" style="width: 3%">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+
+
+        </div>
+        <div class="menu">
+
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+
+            <nav>
+
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-ss_cs_clear_pdf_group_line.html">ss_cs_clear_pdf_group_line</a></li><li><a href="module-ss_ue_commission_calc_line_item.html">ss_ue_commission_calc_line_item</a></li></ul></div>
+
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>MakeCopyEventHandler.js</h1>
+                </header>
+
+
+
+
+
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @NApiVersion 2.x
+ * @NScriptType ClientScript
+ *
+ * @module ss_cs_clear_pdf_group_line
+ *
+ * @require record
+ * @require currentRecord
+ * @require log
+ */
+define(['N/record', 'N/currentRecord', 'N/log'], function(record, currentRecord, log) {
+
+    /**
+     * @function pageInit
+     * @description Client script pageInit function
+     *
+     * @param {Object} context
+     */
+    function pageInit(context) {
+
+
+        /**
+         * @name makeCopyButton
+         * @type {HTMLElement}
+         * @description take the element with the id 'item_copy' and assign it to the variable makeCopyButton
+         *
+         * @example
+         * var makeCopyButton = document.getElementById('item_copy');
+         */
+        var makeCopyButton = document.getElementById('item_copy');
+        if (makeCopyButton) {
+
+            /**
+             * @function onclick
+             * @description Click handler for the makeCopyButton
+             *
+             * @example
+             * makeCopyButton.onclick = function() {
+             *    try {
+             *    // Perform the line copy
+             *    item_machine.copyline();
+             *    setWindowChanged(window, true);
+             *    var rec = currentRecord.get();
+             *
+             * @returns {boolean}
+             *
+             * @throws {error} Error in Make Copy Click Handler
+             */
+            makeCopyButton.onclick = function() {
+                try {
+                    // Perform the line copy
+                    item_machine.copyline();
+
+                    setWindowChanged(window, true);
+
+                    /**
+                     * @name rec
+                     * @type {Record}
+                     * @description Get the current record
+                     *
+                     * @example
+                     * var rec = currentRecord.get();
+                     */
+                    var rec = currentRecord.get();
+
+                    /**
+                     * @name sublistId
+                     * @type {string}
+                     * @description The sublist id
+                     *
+                     * @example
+                     * var sublistId = 'item';
+                     */
+                    var sublistId = 'item';
+
+                    /**
+                     * @name currentLine
+                     * @type {number}
+                     * @description Get the current sublist index
+                     *
+                     * @example
+                     * var currentLine = rec.getCurrentSublistIndex({
+                     *   sublistId: sublistId
+                     *   });
+                     */
+                    var currentLine = rec.getCurrentSublistIndex({
+                        sublistId: sublistId
+                    });
+
+                    /**
+                     * @function setCurrentSublistValue
+                     * @description Clear the 'custcol_pdf_group' field on the new line
+                     *
+                     * @example
+                     * rec.setCurrentSublistValue({
+                     *  sublistId: sublistId,
+                     *  fieldId: 'custcol_ss_pdf_group',
+                     *  value: ''
+                     *  });
+                     */
+                    rec.setCurrentSublistValue({
+                        sublistId: sublistId,
+                        fieldId: 'custcol_ss_pdf_group',
+                        value: ''
+                    });
+
+                    console.log('line copyed')
+
+                    return false;
+                } catch (e) {
+                    console.error('Error in Make Copy Click Handler', e.message);
+                    return false;
+                }
+            };
+        }
+    }
+
+    return {
+        pageInit: pageInit
+    };
+});
+xml
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                </div>
+            </footer>
+
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

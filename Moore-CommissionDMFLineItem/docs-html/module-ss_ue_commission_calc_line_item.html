@@ -1,0 +1,5379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> ss_ue_commission_calc_line_item</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+
+<div class="top-nav">
+    <div class="inner">
+        <img src="logo.jpeg" style="width: 3%">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+
+
+        </div>
+        <div class="menu">
+
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+
+            <nav>
+
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-ss_cs_clear_pdf_group_line.html">ss_cs_clear_pdf_group_line</a></li><li><a href="module-ss_ue_commission_calc_line_item.html">ss_ue_commission_calc_line_item</a></li></ul></div>
+
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Module</p>
+                    <h1>ss_ue_commission_calc_line_item</h1>
+                </header>
+
+
+
+
+
+<section>
+
+<header>
+
+
+
+
+
+</header>
+
+<article>
+    <div class="container-overview">
+
+
+            <div class="description">This script manages the addition  of commission and DMF (Dealer Marketing Fund) line items
+in NetSuite records. It automatically updates these line items based on set conditions and parameters.</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line1">line 1</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li>module:N/runtime</li>
+
+            <li>module:N/log</li>
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="~bodyCommission">
+    <a class="href-link" href="#~bodyCommission">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        bodyCommission
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The body commission rate from the SO transaction record
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line68">line 68</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>newRecord.getValue({fieldId: 'custbody_moore_media_commission'}) = 15%
+var bodyCommission = newRecord.getValue({fieldId: 'custbody_moore_media_commission'}) / 100;</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="~commissionAmount">
+    <a class="href-link" href="#~commissionAmount">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        commissionAmount
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    if the line item is commissionable the commission amount is calculated using the calculateCommission function
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line222">line 222</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var commissionAmount = calculateCommission(extractItemDetails.mediaBudget, bodyCommission, isPostBill, extractItemDetails.itemLineDmf);
+addCommissionLineItem(newRecord, sublistName, extractItemDetails.mediaCommissionItem, commissionAmount, currentItemValue, pdfGroupNumberInitValue);</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">Object</code>
+
+
+    </span>
+
+<h4 class="name" id="~currentItemValue">
+    <a class="href-link" href="#~currentItemValue">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        currentItemValue
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    the lines item value object
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line131">line 131</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var currentItemValue = [currentLineMediaMonth: '1', currentLineItemMediaDmfItem: '1', currentLineItemValue: '1', currentLineMediaDate: '1', currentLineDmfCheckbox: '1', currentLinePdfGroup: '1', currentLineUnits: '1', currentLineIsTaxable: '1', currentLineInviceSort: '1', currentLineMediaCommissionItem: '1', currentLineDivisionDisplayValue: '1', currentLineCommissionCheckbox: '1', currentLineOverrideMediaCheckbox: '1', currentLineMediaBudget: '1', currentLineQuantity: '1', currentLineDescription: '1']</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="~dmfAmount">
+    <a class="href-link" href="#~dmfAmount">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        dmfAmount
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    if the line item is DMF the DMF amount is calculated using the calculateDmf function
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line251">line 251</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var dmfAmount = calculateDmf(extractItemDetails.mediaBudget, bodyCommission, isPostBill);
+addCommissionLineItem(newRecord, sublistName, extractItemDetails.mediaDmfItem, dmfAmount, currentItemValue, pdfGroupNumberInitValue);</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">Object</code>
+
+
+    </span>
+
+<h4 class="name" id="~extractItemDetails">
+    <a class="href-link" href="#~extractItemDetails">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        extractItemDetails
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The extracted item details object
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line141">line 141</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var extractItemDetails = [currentLineMediaMonth: '1', itemLineDmf: '1', currentLineItemValue: '1', currentLineMediaDate: '1', itemLineOverrideMediaCalc: '1', currentLinePdfGroup: '1', mediaBudget: '1', mediaDmfItem: '1', mediaCommissionItem: '1', itemLineCommission: '1']</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="~isPostBill">
+    <a class="href-link" href="#~isPostBill">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        isPostBill
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    Flag indicating if the media billing type is post-bill
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line90">line 90</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var isPostBill = mediaBillType === '2';
+return true if mediaBillType is post-bill</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="~lastCommissionDmfIndex">
+    <a class="href-link" href="#~lastCommissionDmfIndex">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        lastCommissionDmfIndex
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The last commission DMF index is set to the current index
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line235">line 235</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>lastCommissionDmfIndex = i</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="~lastCommissionDmfIndex">
+    <a class="href-link" href="#~lastCommissionDmfIndex">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        lastCommissionDmfIndex
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The last commission DMF index is set to the current index
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line262">line 262</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>lastCommissionDmfIndex = i</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="~lineCount">
+    <a class="href-link" href="#~lineCount">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        lineCount
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The number of lines in the sublist
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line58">line 58</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var lineCount = newRecord.getLineCount({sublistId: sublistName});</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">string</code>
+
+
+    </span>
+
+<h4 class="name" id="~mediaBillType">
+    <a class="href-link" href="#~mediaBillType">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        mediaBillType
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The media billing type from the SO transaction record
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line80">line 80</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var mediaBillType = newRecord.getValue({fieldId: 'custbody_moore_media_billing_type'});</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">object</code>
+
+
+    </span>
+
+<h4 class="name" id="~newRecord">
+    <a class="href-link" href="#~newRecord">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        newRecord
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The new record object from the context
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line39">line 39</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>let newRecord = context.newRecord;</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="~nextPdfNumber">
+    <a class="href-link" href="#~nextPdfNumber">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        nextPdfNumber
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The next available PDF group number
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line151">line 151</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var nextPdfNumber = getNextAvailablePdfNumber(uniquePdfGroupNumbers);</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">string</code>
+
+
+    </span>
+
+<h4 class="name" id="~pdfGroupNumberInitValue">
+    <a class="href-link" href="#~pdfGroupNumberInitValue">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        pdfGroupNumberInitValue
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The PDF group number value is set using the UpdateOriginalLineItem function <code>UpdateOriginalLineItem</code>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line186">line 186</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var pdfGroupNumberInitValue = UpdateOriginalLineItem(newRecord, sublistName, i, preBill, nextPdfNumber);</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">string</code>
+
+
+    </span>
+
+<h4 class="name" id="~pdfGroupNumberInitValue">
+    <a class="href-link" href="#~pdfGroupNumberInitValue">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        pdfGroupNumberInitValue
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    if the line item is post bill and the item is either commissionable or DMF the PDF group number is set using the UpdateOriginalLineItem function
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line203">line 203</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var pdfGroupNumberInitValue = UpdateOriginalLineItem(newRecord, sublistName, i, extractItemDetails.mediaBudget, nextPdfNumber);</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">string</code>
+
+
+    </span>
+
+<h4 class="name" id="~pdfGroupNumberInitValue">
+    <a class="href-link" href="#~pdfGroupNumberInitValue">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        pdfGroupNumberInitValue
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The PDF group number value is set using the setPDFGroupNumber function
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line277">line 277</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var pdfGroupNumberInitValue = setPDFGroupNumber(newRecord, sublistName, i, nextPdfNumber);</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="~preBill">
+    <a class="href-link" href="#~preBill">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        preBill
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    if the line item is not overriden and the item is either commissionable or DMF the prebill amount is calculated using the calculatePrebill function
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line174">line 174</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var preBill = calculatePrebill(extractItemDetails.mediaBudget, extractItemDetails.itemLineCommission ? bodyCommission : 0, extractItemDetails.itemLineDmf ? 1 : 0);</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">string</code>
+
+
+    </span>
+
+<h4 class="name" id="~sublistName">
+    <a class="href-link" href="#~sublistName">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        sublistName
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The name of the sublist being processed
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line49">line 49</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var sublistName = 'item';</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="~totalCommissionAndDmf">
+    <a class="href-link" href="#~totalCommissionAndDmf">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        totalCommissionAndDmf
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    The total commission and DMF amount
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line117">line 117</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+</div>
+
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+
+<code class="param-type">Array</code>
+
+
+    </span>
+
+<h4 class="name" id="~uniquePdfGroupNumbers">
+    <a class="href-link" href="#~uniquePdfGroupNumbers">#</a>
+
+
+            <span class='tag'>inner</span>
+
+
+    <span class="code-name">
+        uniquePdfGroupNumbers
+    </span>
+
+</h4>
+
+
+
+
+<div class="description">
+    An array of unique PDF group numbers
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line102">line 102</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>var uniquePdfGroupNumbers = [ '1', '2', '3', '4', '5' ];</code></pre>
+
+
+
+</div>
+
+            </div>
+        </div>
+
+
+
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~UpdateAllLineItemMediaMonth">
+        <a class="href-link" href="#~UpdateAllLineItemMediaMonth">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                UpdateAllLineItemMediaMonth<span class="signature">(currentRecord, sublistName, lineindex)</span><span class="type-signature"></span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Updates all line items with the media month based on the start date.
+The function updates the media month field for all line items in the sublist.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>currentRecord</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The NetSuite record object.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>sublistName</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">string</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The name of the sublist.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>lineindex</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The line index to update.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line973">line 973</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>UpdateAllLineItemMediaMonth(currentRecord, sublistName, lineindex)</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~UpdateOriginalLineItem">
+        <a class="href-link" href="#~UpdateOriginalLineItem">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                UpdateOriginalLineItem<span class="signature">(currentRecord, sublistName, lineindex, value, groupNumber)</span><span class="type-signature"> &rarr; {string}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        This Function is for Updates the original line item with the specified value and group number.
+The Function is called when the line item is not overriden and the item is either commissionable or DMF.
+The function also sets the PDF group number for the line item.
+The function returns the PDF group number value.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>currentRecord</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The current NetSuite record being processed.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>sublistName</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">string</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The name of the sublist being modified.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>lineindex</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The line index to update.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>value</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The value to set for the line item.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>groupNumber</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The group number to assign to the line item.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line308">line 308</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>The set PDF group number value.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">string</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>UpdateOriginalLineItem(currentRecord, sublistName, lineindex, value, groupNumber)</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~addCommissionLineItem">
+        <a class="href-link" href="#~addCommissionLineItem">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                addCommissionLineItem<span class="signature">(currentRecord, sublistName, mediaCommissionItem, commissionAmount, currentItemValue, pdfGroupNumberInitValue)</span><span class="type-signature"> &rarr; {void}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Adds a commission/DMF  line item to the current Transaction record.
+The function also sets the PDF group number for the line item (Commission/DMF)
+The function checks if the line item already exists and updates the existing line item if found.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>currentRecord</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The current NetSuite record being processed.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>sublistName</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">string</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The name of the sublist being modified.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>mediaCommissionItem</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The ID of the media commission item.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>commissionAmount</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The amount of commission to apply.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>currentItemValue</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The current item's value object.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>pdfGroupNumberInitValue</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">string</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The initial value of the PDF group number.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line355">line 355</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">void</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~adjustAmountOnSpecificCondition">
+        <a class="href-link" href="#~adjustAmountOnSpecificCondition">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                adjustAmountOnSpecificCondition<span class="signature">(newRecord, lineIndexToAdjust)</span><span class="type-signature"></span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Adjusts the amount of a specific line item based on a specific condition.
+The function adjusts the amount of a line item if the total amount is not a whole number.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>newRecord</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The NetSuite record object.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>lineIndexToAdjust</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The line index to adjust.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line896">line 896</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>adjustAmountOnSpecificCondition(newRecord, lineIndexToAdjust)</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~beforeSubmit">
+        <a class="href-link" href="#~beforeSubmit">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                beforeSubmit<span class="signature">(context)</span><span class="type-signature"> &rarr; {void}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Handles the before submit event for the transaction records
+- This function manages the addition of commission and DMF line items based on the current state of each line item in the transaction.
+- This function also manages the sequencing of PDF group numbers for commission and DMF line items.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>context</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The context object containing the new record.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line16">line 16</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Throws:</label></div>
+        <div class="column is-10">
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>Throws an error if an error occurs.</div>
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+<code class="param-type">error</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">void</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>beforeSubmit(context);</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~calculateCommission">
+        <a class="href-link" href="#~calculateCommission">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                calculateCommission<span class="signature">(mediaBudget, bodymediaCommission, isPostBill)</span><span class="type-signature"> &rarr; {number}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Calculates the commission amount based on media budget, body media commission, and post-bill flag.
+The function returns the calculated commission amount.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>mediaBudget</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The media budget amount.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>bodymediaCommission</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The body media commission rate.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>isPostBill</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">boolean</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">Flag indicating if it is post-bill.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line492">line 492</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>The calculated commission amount.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">number</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>calculateCommission(1000, 0.15, false) --> 150</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~calculateDmf">
+        <a class="href-link" href="#~calculateDmf">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                calculateDmf<span class="signature">(mediaBudget, bodymediaCommission, isPostBill)</span><span class="type-signature"> &rarr; {number}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Calculates the DMF amount based on media budget, body media commission, and post-bill flag.
+The function returns the calculated DMF amount.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>mediaBudget</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The media budget amount.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>bodymediaCommission</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The body media commission rate.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>isPostBill</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">boolean</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">Flag indicating if it is post-bill.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line532">line 532</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>The calculated DMF amount.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">number</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>calculateDmf(1000, 0.15, false) --> 250</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~calculatePrebill">
+        <a class="href-link" href="#~calculatePrebill">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                calculatePrebill<span class="signature">(mediaBudget, bodymediacommission, x)</span><span class="type-signature"> &rarr; {number}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Calculates the prebill amount.
+The function returns the calculated prebill amount.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>mediaBudget</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The media budget amount.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>bodymediacommission</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The body media commission rate.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>x</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">Additional multiplier or parameter.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line568">line 568</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>The calculated prebill amount.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">number</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>calculatePrebill(1000, 0.15, 1) --> 1000</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~extractItemDetail">
+        <a class="href-link" href="#~extractItemDetail">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                extractItemDetail<span class="signature">(currentItemValue, runtime)</span><span class="type-signature"> &rarr; {Object}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Extracts item details from a given line item value object.
+The function returns an object containing extracted item details from the getLineItemValue.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>currentItemValue</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The current line item value object.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>runtime</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The runtime object for getting script parameters.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line694">line 694</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>An object containing extracted item details.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">Object</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>extractItemDetail(currentItemValue, runtime) --> { mediaBudget: '1', itemLineCommission: '1', itemLineDmf: '1', itemLineOverrideMediaCalc: '1', currentLineItemValue: '1', ... }</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~findExistingCommissionDmfLine">
+        <a class="href-link" href="#~findExistingCommissionDmfLine">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                findExistingCommissionDmfLine<span class="signature">(currentRecord, sublistName, groupNumber, mediaCommissionItem, mediaDmfItem)</span><span class="type-signature"> &rarr; {number}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Finds an existing commission or DMF line based on group number and item IDs.
+The function also checks if the line item is already commissionable or DMF.
+The function returns the line index if found, or -1 if not found.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>currentRecord</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The current NetSuite record being processed.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>sublistName</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">string</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The name of the sublist.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>groupNumber</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The group number to look for.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>mediaCommissionItem</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The ID of the media commission item.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>mediaDmfItem</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The ID of the media DMF item.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line768">line 768</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>The line index if found, or -1 if not found.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">number</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>findExistingCommissionDmfLine(currentRecord, sublistName, groupNumber, mediaCommissionItem, mediaDmfItem) --> -1</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~getLineItemValue">
+        <a class="href-link" href="#~getLineItemValue">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                getLineItemValue<span class="signature">(newRecord, sublistId, line)</span><span class="type-signature"> &rarr; {Object}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Retrieves line item values from a given record and line index.
+The function returns an object containing line item values.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>newRecord</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The NetSuite record object.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>sublistId</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">string</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The ID of the sublist.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>line</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The line number to retrieve values from.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line598">line 598</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>An object containing line item values.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">Object</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~getMonthNumber">
+        <a class="href-link" href="#~getMonthNumber">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                getMonthNumber<span class="signature">(dateString)</span><span class="type-signature"> &rarr; {number}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Gets the month number from a given date string.
+The function returns the month number (1-12) from the date string.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>dateString</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">string</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The date string to extract the month number from.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line955">line 955</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>The month number (1-12).</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">number</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>getMonthNumber(dateString) --> 6</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~getNextAvailablePdfNumber">
+        <a class="href-link" href="#~getNextAvailablePdfNumber">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                getNextAvailablePdfNumber<span class="signature">(uniquePdfGroupNumbers)</span><span class="type-signature"> &rarr; {number}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Determines the next available PDF group number based on existing numbers for sequencing.
+The function returns the next available PDF group number
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>uniquePdfGroupNumbers</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Array</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">An array of existing PDF group numbers.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line854">line 854</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>The next available PDF group number.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">number</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>getNextAvailablePdfNumber(uniquePdfGroupNumbers) --> 6</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~getUniquePdfGroupNumbersFromLines">
+        <a class="href-link" href="#~getUniquePdfGroupNumbersFromLines">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                getUniquePdfGroupNumbersFromLines<span class="signature">(newRecord, sublistId)</span><span class="type-signature"> &rarr; {Array}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Gets unique PDF group numbers from line items in a given sublist.
+The function returns an array of unique PDF group numbers.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>newRecord</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The NetSuite record object.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>sublistId</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">string</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The ID of the sublist.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line821">line 821</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>An array of unique PDF group numbers.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">Array</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>getUniquePdfGroupNumbersFromLines(newRecord, sublistId) --> [ '1', '2', '3', '4', '5' ]</code></pre>
+
+
+
+</div>
+
+                <div class="member">
+
+
+
+    <h4 class="name" id="~setPDFGroupNumber">
+        <a class="href-link" href="#~setPDFGroupNumber">#</a>
+
+
+                <span class='tag'>inner</span>
+
+
+        <span class="code-name">
+
+                setPDFGroupNumber<span class="signature">(currentRecord, sublistName, lineIndex, groupNumber)</span><span class="type-signature"> &rarr; {string}</span>
+
+        </span>
+    </h4>
+
+
+
+
+    <div class="description">
+        Sets the PDF group number for a given line item.
+The function returns the set or existing PDF group number.
+The function also checks if the PDF group number is null, undefined, empty, or 'unset' and sets the PDF group number if true.
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+
+
+            <th>Type</th>
+
+
+
+
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>currentRecord</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">Object</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The current NetSuite record being processed.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>sublistName</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">string</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The name of the sublist being modified.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>lineIndex</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The line index to update.</td>
+</tr>
+
+
+
+
+
+<tr class="deep-level-0">
+
+      <td class="name"><code>groupNumber</code></td>
+
+
+  <td class="type">
+
+
+<code class="param-type">number</code>
+
+
+
+  </td>
+
+
+
+
+
+  <td class="description last">The group number to assign.</td>
+</tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="tag-source">
+            <a href="ss_ue_commission_calc_line_item.js.html" class="button">View Source</a>
+            <span>
+                <a href="ss_ue_commission_calc_line_item.js.html">ss_ue_commission_calc_line_item.js</a>, <a href="ss_ue_commission_calc_line_item.js.html#line728">line 728</a>
+            </span>
+        </p>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+
+
+
+<div class="columns">
+
+    <div class='param-desc column is-7'>The set or existing PDF group number.</div>
+
+
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+
+<code class="param-type">string</code>
+
+
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+
+
+        <pre class="prettyprint"><code>setPDFGroupNumber(currentRecord, sublistName, lineIndex, groupNumber) --> '1'</code></pre>
+
+
+
+</div>
+
+            </div>
+        </div>
+
+
+
+
+
+</article>
+
+</section>
+
+
+
+
+            </div>
+
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                </div>
+            </footer>
+
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
